@@ -36,11 +36,15 @@
   "dependencies": {
     "@types/fs-extra": "^11.0.2",
     "@types/lodash": "^4.14.198",
+    "@types/luxon": "^3.3.2",
     "fs-extra": "^11.1.1",
     "glob": "^10.3.4",
     "lodash": "^4.17.21",
+    "luxon": "^3.4.3",
     "natural-orderby": "^3.0.2",
+    "node-gzip": "^1.1.2",
     "normalize-url": "^6.1.0",
+    "object-treeify": "^2.1.1",
     "signale": "^1.4.0"
   },
   "devDependencies": {
