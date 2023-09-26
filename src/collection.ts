@@ -166,4 +166,10 @@ export class Collection {
   toJSON() {
     return JSON.stringify(this._items)
   }
+
+  mergeBy(collection: Collection, iteratee: Iteratee): Collection {
+    this._items = _.unionBy(this._items, collection._items, iteratee)
+
+    return this
+  }
 }

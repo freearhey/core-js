@@ -25,6 +25,12 @@ export class Storage {
     await fs.mkdir(dir, { recursive: true }).catch(console.error)
   }
 
+  createDirSync(dir: string): void {
+    if (fs.existsSync(dir)) return
+
+    fs.mkdirSync(dir, { recursive: true })
+  }
+
   async load(filepath: string): Promise<string> {
     return this._read(filepath)
   }
@@ -47,12 +53,26 @@ export class Storage {
     return await fs.exists(absFilepath)
   }
 
-  async _write(filepath: string, data: string = ''): Promise<void> {
+  existsSync(filepath: string): boolean {
+    const absFilepath = path.join(this._rootDir, filepath)
+
+    return fs.existsSync(absFilepath)
+  }
+
+  async _write(filepath: string, data: any = ''): Promise<void> {
     const absFilepath = path.join(this._rootDir, filepath)
     const dir = path.dirname(absFilepath)
 
     await this.createDir(dir)
     await fs.writeFile(absFilepath, data, { encoding: 'utf8', flag: 'w' })
+  }
+
+  _writeSync(filepath: string, data: any = ''): void {
+    const absFilepath = path.join(this._rootDir, filepath)
+    const dir = path.dirname(absFilepath)
+
+    this.createDirSync(dir)
+    fs.writeFileSync(absFilepath, data, { encoding: 'utf8', flag: 'w' })
   }
 
   async append(filepath: string, data: string = ''): Promise<void> {
@@ -65,8 +85,12 @@ export class Storage {
     await this._write(filepath)
   }
 
-  async save(filepath: string, content: string): Promise<void> {
+  async save(filepath: string, content: any): Promise<void> {
     await this._write(filepath, content)
+  }
+
+  async saveSync(filepath: string, content: any): Promise<void> {
+    await this._writeSync(filepath, content)
   }
 
   async saveFile(file: File): Promise<void> {

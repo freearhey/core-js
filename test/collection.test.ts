@@ -197,7 +197,7 @@ describe('collection', () => {
   it('can convert collection to json string', () => {
     const collection = new Collection([{ name: 'a' }, { name: 'b' }, { name: 'c' }])
 
-    expect(collection.toJSON()).toEqual(`[{"name":"a"},{"name":"b"},{"name":"c"}]`)
+    expect(collection.toJSON()).toEqual('[{"name":"a"},{"name":"b"},{"name":"c"}]')
   })
 
   it('can merge with another collection', () => {

@@ -99,7 +99,7 @@ describe('storage', () => {
   it('can save File', async () => {
     fs.emptyDirSync(OUTPUT_DIR)
     const storage = new Storage(OUTPUT_DIR)
-    const file = new File(`e.txt`, 'e')
+    const file = new File('e.txt', 'e')
 
     await storage.saveFile(file)
 
