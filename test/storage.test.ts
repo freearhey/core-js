@@ -36,8 +36,10 @@ describe('storage', () => {
     const storage = new Storage(OUTPUT_DIR)
 
     await storage.createDir(`${OUTPUT_DIR}/a`)
+    storage.createDirSync(`${OUTPUT_DIR}/b`)
 
     expect(fs.existsSync(path.resolve(`${OUTPUT_DIR}/a`))).toEqual(true)
+    expect(fs.existsSync(path.resolve(`${OUTPUT_DIR}/b`))).toEqual(true)
   })
 
   it('can return content from the file', async () => {
@@ -55,6 +57,8 @@ describe('storage', () => {
   it('can check if file exists', async () => {
     const storage = new Storage(INPUT_DIR)
 
+    expect(storage.existsSync('a.txt')).toEqual(true)
+    expect(storage.existsSync('d.txt')).toEqual(false)
     expect(await storage.exists('a.txt')).toEqual(true)
     expect(await storage.exists('d.txt')).toEqual(false)
   })
@@ -86,8 +90,10 @@ describe('storage', () => {
     const storage = new Storage(OUTPUT_DIR)
 
     await storage.save('d.txt', 'd')
+    storage.saveSync('e.txt', 'e')
 
     expect(fs.readFileSync(`${OUTPUT_DIR}/d.txt`, { encoding: 'utf8' })).toEqual('d')
+    expect(fs.readFileSync(`${OUTPUT_DIR}/e.txt`, { encoding: 'utf8' })).toEqual('e')
   })
 
   it('can save File', async () => {

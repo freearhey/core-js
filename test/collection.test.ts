@@ -199,4 +199,23 @@ describe('collection', () => {
 
     expect(collection.toJSON()).toEqual(`[{"name":"a"},{"name":"b"},{"name":"c"}]`)
   })
+
+  it('can merge with another collection', () => {
+    const collectionA = new Collection([
+      { id: 1, value: 'a', type: 'c' },
+      { id: 2, value: 'b' }
+    ])
+    const collectionB = new Collection([
+      { id: '1', value: 'c' },
+      { id: 3, value: 'd' }
+    ])
+
+    expect(collectionA.mergeBy(collectionB, item => item.id.toString()).toJSON()).toEqual(
+      JSON.stringify([
+        { id: 1, value: 'a', type: 'c' },
+        { id: 2, value: 'b' },
+        { id: 3, value: 'd' }
+      ])
+    )
+  })
 })
