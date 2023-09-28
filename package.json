@@ -1,6 +1,6 @@
 {
   "name": "@freearhey/core",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Toolset for Node.js",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,11 +13,6 @@
     "transform": {
       "^.+\\.ts$": "ts-jest"
     }
-  },
-  "signale": {
-    "displayLabel": false,
-    "displayScope": false,
-    "displayBadge": false
   },
   "publishConfig": {
     "access": "public",
