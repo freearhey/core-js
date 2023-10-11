@@ -78,8 +78,13 @@ describe('collection', () => {
     const collection = new Collection([{ name: 'a' }, { name: 'b' }, { name: 'c' }])
 
     let output = ''
-    collection.forEach(i => (output += i.name))
-    expect(output).toEqual('abc')
+    collection.forEach(item => {
+      output += item.name
+    })
+    collection.forEach((item, index) => {
+      output += item.name + index
+    })
+    expect(output).toEqual('abca0b1c2')
     expect(collection).toEqual(new Collection([{ name: 'a' }, { name: 'b' }, { name: 'c' }]))
   })
 

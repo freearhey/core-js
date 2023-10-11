@@ -71,10 +71,8 @@ export class Collection {
     return new Collection(items)
   }
 
-  forEach(iteratee: Iteratee) {
-    for (const item of this._items) {
-      iteratee(item)
-    }
+  forEach(callback: (item: any, index?: number) => void) {
+    this._items.forEach(callback)
 
     return this
   }
