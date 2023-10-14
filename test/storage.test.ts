@@ -9,13 +9,13 @@ describe('storage', () => {
   it('can create new storage', () => {
     const storage = new Storage()
 
-    expect(storage._rootDir).toEqual('./')
+    expect(storage._rootDir).toEqual(path.resolve('./'))
   })
 
   it('can create new storage with custom root directory path', () => {
     const storage = new Storage('./test')
 
-    expect(storage._rootDir).toEqual('test')
+    expect(storage._rootDir).toEqual(path.resolve('./test'))
   })
 
   it('can return list of files in storage', async () => {
@@ -98,8 +98,8 @@ describe('storage', () => {
 
   it('can save File', async () => {
     fs.emptyDirSync(OUTPUT_DIR)
-    const storage = new Storage(OUTPUT_DIR)
-    const file = new File('e.txt', 'e')
+    const storage = new Storage()
+    const file = new File(`${OUTPUT_DIR}/e.txt`, 'e')
 
     await storage.saveFile(file)
 
