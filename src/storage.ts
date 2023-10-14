@@ -7,7 +7,7 @@ export class Storage {
   _rootDir: string
 
   constructor(rootDir?: string) {
-    this._rootDir = path.resolve(path.normalize(rootDir || process.cwd()))
+    this._rootDir = rootDir ? path.resolve(rootDir) : process.cwd()
   }
 
   async list(pattern?: string): Promise<string[]> {
