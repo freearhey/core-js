@@ -7,7 +7,7 @@ export class Storage {
   _rootDir: string
 
   constructor(rootDir?: string) {
-    this._rootDir = path.normalize(rootDir || './')
+    this._rootDir = path.resolve(path.normalize(rootDir || process.cwd()))
   }
 
   async list(pattern?: string): Promise<string[]> {
@@ -90,11 +90,14 @@ export class Storage {
   }
 
   async saveSync(filepath: string, content: any): Promise<void> {
-    await this._writeSync(filepath, content)
+    this._writeSync(filepath, content)
   }
 
   async saveFile(file: File): Promise<void> {
-    await this._write(file.path(), file.content())
+    const dir = path.dirname(file.path())
+
+    await this.createDir(dir)
+    await fs.writeFile(file.path(), file.content(), { encoding: 'utf8', flag: 'w' })
   }
 
   async createStream(filepath: string): Promise<NodeJS.WriteStream> {
