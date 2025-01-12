@@ -20,15 +20,17 @@ export class Storage {
   }
 
   async createDir(dir: string): Promise<void> {
-    if (await fs.exists(dir)) return
+    const absFilepath = path.join(this._rootDir, dir)
+    if (await fs.exists(absFilepath)) return
 
-    await fs.mkdir(dir, { recursive: true }).catch(console.error)
+    await fs.mkdir(absFilepath, { recursive: true }).catch(console.error)
   }
 
   createDirSync(dir: string): void {
-    if (fs.existsSync(dir)) return
+    const absFilepath = path.join(this._rootDir, dir)
+    if (fs.existsSync(absFilepath)) return
 
-    fs.mkdirSync(dir, { recursive: true })
+    fs.mkdirSync(absFilepath, { recursive: true })
   }
 
   async load(filepath: string): Promise<string> {
@@ -61,7 +63,7 @@ export class Storage {
 
   async _write(filepath: string, data: any = ''): Promise<void> {
     const absFilepath = path.join(this._rootDir, filepath)
-    const dir = path.dirname(absFilepath)
+    const dir = path.dirname(filepath)
 
     await this.createDir(dir)
     await fs.writeFile(absFilepath, data, { encoding: 'utf8', flag: 'w' })
@@ -69,7 +71,7 @@ export class Storage {
 
   _writeSync(filepath: string, data: any = ''): void {
     const absFilepath = path.join(this._rootDir, filepath)
-    const dir = path.dirname(absFilepath)
+    const dir = path.dirname(filepath)
 
     this.createDirSync(dir)
     fs.writeFileSync(absFilepath, data, { encoding: 'utf8', flag: 'w' })
@@ -94,15 +96,15 @@ export class Storage {
   }
 
   async saveFile(file: File): Promise<void> {
-    const dir = path.dirname(file.path())
+    const absFilepath = path.join(this._rootDir, file.path())
 
-    await this.createDir(dir)
-    await fs.writeFile(file.path(), file.content(), { encoding: 'utf8', flag: 'w' })
+    await this.createDir(file.dirname())
+    await fs.writeFile(absFilepath, file.content(), { encoding: 'utf8', flag: 'w' })
   }
 
   async createStream(filepath: string): Promise<NodeJS.WriteStream> {
     const absFilepath = path.join(this._rootDir, filepath)
-    const dir = path.dirname(absFilepath)
+    const dir = path.dirname(filepath)
 
     await this.createDir(dir)
 
