@@ -35,8 +35,8 @@ describe('storage', () => {
 
     const storage = new Storage(OUTPUT_DIR)
 
-    await storage.createDir(`${OUTPUT_DIR}/a`)
-    storage.createDirSync(`${OUTPUT_DIR}/b`)
+    await storage.createDir(`a`)
+    storage.createDirSync(`b`)
 
     expect(fs.existsSync(path.resolve(`${OUTPUT_DIR}/a`))).toEqual(true)
     expect(fs.existsSync(path.resolve(`${OUTPUT_DIR}/b`))).toEqual(true)

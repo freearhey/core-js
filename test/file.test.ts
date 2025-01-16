@@ -1,18 +1,18 @@
 import { File } from '../src'
-import * as path from 'path'
+import path from 'path'
 
 describe('file', () => {
   it('can create empty file', () => {
     const file = new File('folder/example.txt')
 
-    expect(file._filepath).toEqual(path.resolve('./folder/example.txt'))
+    expect(file._filepath).toEqual(path.normalize('folder/example.txt'))
     expect(file._content).toEqual('')
   })
 
   it('can create file with content', () => {
     const file = new File('folder/example.txt', 'abc')
 
-    expect(file._filepath).toEqual(path.resolve('./folder/example.txt'))
+    expect(file._filepath).toEqual(path.normalize('folder/example.txt'))
     expect(file._content).toEqual('abc')
   })
 
@@ -25,7 +25,7 @@ describe('file', () => {
   it('can return dirname', () => {
     const file = new File('folder/example.txt', 'abc')
 
-    expect(file.dirname()).toEqual(path.resolve('./folder'))
+    expect(file.dirname()).toEqual(path.normalize('./folder'))
   })
 
   it('can return basename', () => {
@@ -37,7 +37,7 @@ describe('file', () => {
   it('can return filepath', () => {
     const file = new File('folder/example.txt', 'abc')
 
-    expect(file.path()).toEqual(path.resolve('./folder/example.txt'))
+    expect(file.path()).toEqual(path.normalize('folder/example.txt'))
   })
 
   it('can return content', () => {
