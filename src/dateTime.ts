@@ -75,7 +75,7 @@ export class DateTime {
   }
 
   format(format: string): string {
-    format = format.replace(/\[/g, '\'').replace(/\]/g, '\'')
+    format = format.replace(/\[/g, "'").replace(/\]/g, "'")
 
     return this._dt.toFormat(format)
   }
