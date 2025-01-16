@@ -9,7 +9,7 @@ export class Timer {
   }
 
   format(format: string) {
-    format = format.replace(/\[|\]/g, '\'').replace(/HH/g, 'hh')
+    format = format.replace(/\[|\]/g, "'").replace(/HH/g, 'hh')
 
     const milliseconds = performance.now() - this.t0
 
