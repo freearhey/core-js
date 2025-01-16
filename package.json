@@ -7,7 +7,9 @@
   "scripts": {
     "build": "npx tsc --build",
     "lint": "npx eslint ./src/**/*.ts ./test/**/*.ts",
-    "test": "jest --runInBand"
+    "test": "run-script-os",
+    "test:win32": "SET \"TZ=Pacific/Nauru\" && jest --runInBand",
+    "test:default": "TZ=Pacific/Nauru jest --runInBand"
   },
   "jest": {
     "transform": {
@@ -40,6 +42,7 @@
     "node-gzip": "^1.1.2",
     "normalize-url": "^6.1.0",
     "object-treeify": "^2.1.1",
+    "run-script-os": "^1.1.6",
     "signale": "^1.4.0"
   },
   "devDependencies": {
