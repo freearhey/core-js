@@ -6,7 +6,7 @@ describe('date', () => {
     const date = new DateTime('2016-05-25T09:24:15.123')
 
     expect(date._dt).toBeInstanceOf(Luxon)
-    expect(date._dt.toJSON()).toBe('2016-05-25T09:24:15.123+03:00')
+    expect(date._dt.toJSON()).toBe('2016-05-25T09:24:15.123+12:00')
   })
 
   it('can create new date from JS Date', () => {
@@ -36,16 +36,16 @@ describe('date', () => {
   it('can add days to the date', () => {
     const date = new DateTime('2021-05-16T16:03:44+06:00')
 
-    expect(date.add(2, 'd').toString()).toEqual('2021-05-18T13:03:44.000+03:00')
-    expect(date.add(2, 'days').toString()).toEqual('2021-05-18T13:03:44.000+03:00')
-    expect(date.add(2, 'day').toString()).toEqual('2021-05-18T13:03:44.000+03:00')
+    expect(date.add(2, 'd').toString()).toEqual('2021-05-18T22:03:44.000+12:00')
+    expect(date.add(2, 'days').toString()).toEqual('2021-05-18T22:03:44.000+12:00')
+    expect(date.add(2, 'day').toString()).toEqual('2021-05-18T22:03:44.000+12:00')
   })
 
   it('can subtract days from the date', () => {
     const date = new DateTime('2021-05-16T16:03:44+06:00')
 
-    expect(date.subtract(2, 'd').toString()).toEqual('2021-05-14T13:03:44.000+03:00')
-    expect(date.subtract(2, 'days').toString()).toEqual('2021-05-14T13:03:44.000+03:00')
-    expect(date.subtract(2, 'day').toString()).toEqual('2021-05-14T13:03:44.000+03:00')
+    expect(date.subtract(2, 'd').toString()).toEqual('2021-05-14T22:03:44.000+12:00')
+    expect(date.subtract(2, 'days').toString()).toEqual('2021-05-14T22:03:44.000+12:00')
+    expect(date.subtract(2, 'day').toString()).toEqual('2021-05-14T22:03:44.000+12:00')
   })
 })

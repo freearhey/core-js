@@ -35,8 +35,8 @@ describe('storage', () => {
 
     const storage = new Storage(OUTPUT_DIR)
 
-    await storage.createDir('a')
-    storage.createDirSync('b')
+    await storage.createDir(`a`)
+    storage.createDirSync(`b`)
 
     expect(fs.existsSync(path.resolve(`${OUTPUT_DIR}/a`))).toEqual(true)
     expect(fs.existsSync(path.resolve(`${OUTPUT_DIR}/b`))).toEqual(true)
@@ -61,6 +61,15 @@ describe('storage', () => {
     expect(storage.existsSync('d.txt')).toEqual(false)
     expect(await storage.exists('a.txt')).toEqual(true)
     expect(await storage.exists('d.txt')).toEqual(false)
+  })
+
+  it('can check if file exists with absolute path', async () => {
+    const storage = new Storage()
+
+    expect(storage.existsSync(path.resolve(`${INPUT_DIR}/a.txt`))).toEqual(true)
+    expect(storage.existsSync(path.resolve(`${INPUT_DIR}/d.txt`))).toEqual(false)
+    expect(await storage.exists(path.resolve(`${INPUT_DIR}/a.txt`))).toEqual(true)
+    expect(await storage.exists(path.resolve(`${INPUT_DIR}/d.txt`))).toEqual(false)
   })
 
   it('can append content to the file', async () => {
@@ -98,8 +107,8 @@ describe('storage', () => {
 
   it('can save File', async () => {
     fs.emptyDirSync(OUTPUT_DIR)
-    const storage = new Storage(OUTPUT_DIR)
-    const file = new File('e.txt', 'e')
+    const storage = new Storage()
+    const file = new File(`${OUTPUT_DIR}/e.txt`, 'e')
 
     await storage.saveFile(file)
 
