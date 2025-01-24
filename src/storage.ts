@@ -45,7 +45,7 @@ export class Storage {
     return await fs.readFile(absFilepath, { encoding: 'utf8' })
   }
 
-  async json(filepath: string): Promise<object> {
+  async json(filepath: string): Promise<object | object[]> {
     const content = await this._read(filepath)
 
     return JSON.parse(content)
