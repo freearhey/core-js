@@ -103,8 +103,20 @@ export class Collection {
     return new Collection(items)
   }
 
-  orderBy(iteratees: Iteratee | Iteratee[], orders?: Order | Order[]) {
-    const items = orderBy(this._items, iteratees, orders)
+  sortBy(iteratees: Iteratee | Iteratee[]) {
+    const items = _.sortBy(this._items, iteratees)
+
+    return new Collection(items)
+  }
+
+  orderBy(
+    iteratees: Iteratee | Iteratee[],
+    orders: 'asc' | 'desc' | string[] = 'asc',
+    natural: boolean = true
+  ) {
+    const items = natural
+      ? orderBy(this._items, iteratees, orders as Order)
+      : _.orderBy(this._items, iteratees, orders as _.Many<boolean | 'asc' | 'desc'>)
 
     return new Collection(items)
   }
