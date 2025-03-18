@@ -133,6 +133,40 @@ describe('collection', () => {
     )
   })
 
+  it('can order items by value desc', () => {
+    const collection = new Collection([{ name: 'c' }, { name: 'a' }, { name: 'b' }])
+
+    expect(collection.orderBy(i => i.name, 'desc')).toEqual(
+      new Collection([{ name: 'c' }, { name: 'b' }, { name: 'a' }])
+    )
+  })
+
+  it('can sort items by value but not natural', () => {
+    const collection = new Collection([
+      { name: '01' },
+      { name: '002' },
+      { name: '100tv' },
+      { name: '100TV' }
+    ])
+
+    expect(collection.orderBy(i => i.name.toLowerCase(), 'asc', false)).toEqual(
+      new Collection([{ name: '002' }, { name: '01' }, { name: '100tv' }, { name: '100TV' }])
+    )
+  })
+
+  it('can sort items by value', () => {
+    const collection = new Collection([
+      { name: '002' },
+      { name: '01' },
+      { name: '100tv' },
+      { name: '100TV' }
+    ])
+
+    expect(collection.sortBy(i => i.name.toLowerCase())).toEqual(
+      new Collection([{ name: '002' }, { name: '01' }, { name: '100tv' }, { name: '100TV' }])
+    )
+  })
+
   it('can convert Collection to Dictionary', () => {
     const collection = new Collection([{ name: 'a' }, { name: 'b' }, { name: 'c' }])
 
