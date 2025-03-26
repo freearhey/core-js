@@ -22,7 +22,7 @@ describe('collection', () => {
   it('can find item', () => {
     const collection = new Collection([{ name: 'a' }, { name: 'b' }, { name: 'c' }])
 
-    expect(collection.find(i => i.name === 'b')).toEqual(new Collection([{ name: 'b' }]))
+    expect(collection.find(i => i.name === 'b')).toEqual({ name: 'b' })
   })
 
   it('can add item', () => {
@@ -256,5 +256,21 @@ describe('collection', () => {
         { id: 3, value: 'd' }
       ])
     )
+  })
+
+  it('can reduce items', () => {
+    const collection = new Collection([
+      { name: 'a', children: [{ name: 'aa' }, { name: 'ab' }] },
+      { name: 'b', children: [{ name: 'ba' }, { name: 'bb' }] },
+      { name: 'c' }
+    ])
+
+    expect(
+      collection.reduce((output, item) => {
+        output = output.concat(item.children)
+
+        return output
+      })
+    ).toEqual(new Collection([{ name: 'aa' }, { name: 'ab' }, { name: 'ba' }, { name: 'bb' }]))
   })
 })
