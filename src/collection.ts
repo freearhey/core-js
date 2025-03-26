@@ -27,10 +27,8 @@ export class Collection {
     return this._items[this._items.length - 1]
   }
 
-  find(iteratee: Iteratee): Collection {
-    const found = this._items.filter(iteratee)
-
-    return found ? new Collection(found) : new Collection([])
+  find(iteratee: Iteratee): any {
+    return this._items.find(iteratee)
   }
 
   add(data: string | number | object) {
@@ -85,6 +83,12 @@ export class Collection {
 
   concat(collection: Collection) {
     const items = this._items.concat(collection._items)
+
+    return new Collection(items)
+  }
+
+  reduce(iteratee: Iteratee) {
+    const items = this._items.reduce(iteratee, [])
 
     return new Collection(items)
   }
