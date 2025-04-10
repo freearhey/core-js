@@ -1,14 +1,15 @@
-import { Timer } from '../src'
+import { describe, it, expect } from 'vitest'
+import { Timer } from '../dist'
 
 describe('timer', () => {
   it('can return list of variables', async () => {
     const timer = new Timer()
     timer.start()
-    await new Promise(r => setTimeout(r, 500))
+    await new Promise(r => setTimeout(r, 200))
 
     const number = parseInt(timer.format('SSS'))
-    expect(number >= 500).toEqual(true)
-    expect(number < 600).toEqual(true)
+    expect(number >= 200).toEqual(true)
+    expect(number < 300).toEqual(true)
   })
 
   it('can format result', async () => {

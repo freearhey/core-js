@@ -1,4 +1,5 @@
-import { Logger } from '../src'
+import { describe, it, expect, vi } from 'vitest'
+import { Logger } from '../dist'
 
 describe('logger', () => {
   it('can create instance of Signale', () => {
@@ -8,54 +9,45 @@ describe('logger', () => {
   })
 
   it('can display message', () => {
-    process.stdout.write = jest.fn()
     const logger = new Logger()
+    const spy = vi.fn()
+    logger.mockTypes(() => spy)
 
-    logger.info('await')
-    logger.info('complete')
-    logger.info('debug')
-    logger.info('fatal')
-    logger.info('fav')
-    logger.info('note')
-    logger.info('pause')
-    logger.info('pending')
-    logger.info('star')
-    logger.info('warn')
-    logger.info('watch')
-    logger.info('log')
     logger.info('info')
-    logger.info('error')
-    logger.info('start')
-    logger.info('success')
+    logger.ready('ready')
+    logger.debug('debug')
+    logger.fail('fail')
+    logger.verbose('verbose')
+    logger.warn('warn')
+    logger.log('log')
+    logger.error('error')
+    logger.start('start')
+    logger.trace('trace')
+    logger.success('success')
 
-    expect(process.stdout.write).toHaveBeenCalledWith('await\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('complete\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('debug\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('fatal\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('fav\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('note\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('pause\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('pending\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('star\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('warn\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('watch\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('log\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('info\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('error\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('start\n')
-    expect(process.stdout.write).toHaveBeenCalledWith('success\n')
+    expect(spy).toHaveBeenCalledWith('info')
+    expect(spy).toHaveBeenCalledWith('ready')
+    expect(spy).toHaveBeenCalledWith('debug')
+    expect(spy).toHaveBeenCalledWith('fail')
+    expect(spy).toHaveBeenCalledWith('verbose')
+    expect(spy).toHaveBeenCalledWith('warn')
+    expect(spy).toHaveBeenCalledWith('log')
+    expect(spy).toHaveBeenCalledWith('error')
+    expect(spy).toHaveBeenCalledWith('start')
+    expect(spy).toHaveBeenCalledWith('trace')
+    expect(spy).toHaveBeenCalledWith('success')
   })
 
   it('can display object as tree', () => {
-    process.stdout.write = jest.fn()
     const logger = new Logger()
+    const spy = vi.spyOn(console, 'log').mockImplementation(() => undefined)
+
     logger.tree({ a: 'b', b: 'c', c: { a: 'b', b: 'c' } })
 
-    expect(process.stdout.write).toHaveBeenCalledWith(`  a: b
-  b: c
-  c
-     a: b
-     b: c
-`)
+    expect(spy).toHaveBeenCalledWith(`a: b
+b: c
+c
+   a: b
+   b: c`)
   })
 })

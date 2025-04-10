@@ -1,4 +1,5 @@
-import { Collection, Dictionary } from '../src'
+import { Collection, Dictionary } from '../dist'
+import { describe, it, expect } from 'vitest'
 
 describe('collection', () => {
   it('can create empty collection', () => {
@@ -33,13 +34,22 @@ describe('collection', () => {
     expect(collection.all()).toEqual(['a', 'b', 'c'])
   })
 
-  it('can check if it intersects with over collection or not', () => {
+  it('can find all intersections with another collection', () => {
     const collectionA = new Collection(['a', 'b', 'c'])
     const collectionB = new Collection(['b'])
     const collectionC = new Collection(['c'])
 
-    expect(collectionA.intersects(collectionB)).toBe(true)
-    expect(collectionB.intersects(collectionC)).toBe(false)
+    expect(collectionA.intersects(collectionB)).toEqual(new Collection(['b']))
+    expect(collectionB.intersects(collectionC)).toEqual(new Collection())
+  })
+
+  it('can find all intersections with another collection by key', () => {
+    const collectionA = new Collection([{ name: 'a' }, { name: 'b' }, { name: 'c' }])
+    const collectionB = new Collection([{ name: 'b' }])
+    const collectionC = new Collection([{ name: 'c' }])
+
+    expect(collectionA.intersectsBy(collectionB, i => i.name)).toEqual(new Collection([{ name: 'b' }]))
+    expect(collectionB.intersectsBy(collectionC, i => i.name)).toEqual(new Collection())
   })
 
   it('can return count of items', () => {
@@ -266,11 +276,17 @@ describe('collection', () => {
     ])
 
     expect(
-      collection.reduce((output, item) => {
-        output = output.concat(item.children)
+      collection
+        .reduce((output, item) => {
+          if (item.children) {
+            output = output.concat(item.children)
+          }
 
-        return output
-      })
-    ).toEqual(new Collection([{ name: 'aa' }, { name: 'ab' }, { name: 'ba' }, { name: 'bb' }]))
+          return output
+        })
+        .all()
+    ).toEqual(
+      new Collection([{ name: 'aa' }, { name: 'ab' }, { name: 'ba' }, { name: 'bb' }]).all()
+    )
   })
 })

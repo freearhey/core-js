@@ -1,4 +1,5 @@
-import { StringTemplate } from '../src'
+import { describe, it, expect } from 'vitest'
+import { StringTemplate } from '../dist'
 
 describe('stringTemplate', () => {
   it('can return list of variables', () => {

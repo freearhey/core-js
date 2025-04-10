@@ -1,18 +1,19 @@
-import { Zip } from '../src'
+import { describe, it, expect } from 'vitest'
+import { Zip } from '../dist'
 
 describe('zip', () => {
   it('can compress string', async () => {
     const zip = new Zip()
-    const compressed = await zip.compress('ABC')
+    const compressed = zip.compress('ABC')
 
-    expect(compressed).toBeInstanceOf(Buffer)
+    expect(compressed).toBeInstanceOf(Uint8Array)
   })
 
   it('can decompress buffer', async () => {
     const zip = new Zip()
-    const compressed = await zip.compress('ABC')
-    const decompressed = await zip.decompress(compressed)
+    const compressed = zip.compress('ABC')
+    const decompressed = zip.decompress(compressed)
 
-    expect(decompressed.toString()).toEqual('ABC')
+    expect(decompressed).toEqual('ABC')
   })
 })

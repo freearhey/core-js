@@ -1,4 +1,5 @@
-import { Storage, File } from '../src'
+import { describe, it, expect } from 'vitest'
+import { Storage, File } from '../dist'
 import fs from 'fs-extra'
 import path from 'path'
 

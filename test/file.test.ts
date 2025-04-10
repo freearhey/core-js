@@ -1,4 +1,5 @@
-import { File } from '../src'
+import { describe, it, expect } from 'vitest'
+import { File } from '../dist'
 import path from 'path'
 
 describe('file', () => {
