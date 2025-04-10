@@ -1,13 +1,11 @@
-import { gzip, ungzip } from 'node-gzip'
+import pako from 'pako'
 
 export class Zip {
-  constructor() {}
-
-  async compress(data: string): Promise<Buffer> {
-    return gzip(data)
+  compress(data: Uint8Array | ArrayBuffer | string): Uint8Array {
+    return pako.deflate(data)
   }
 
-  async decompress(buffer: Buffer): Promise<Buffer> {
-    return ungzip(buffer)
+  decompress(buffer: Uint8Array | ArrayBuffer): string {
+    return pako.inflate(buffer, { to: 'string' })
   }
 }

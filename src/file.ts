@@ -2,38 +2,40 @@ import * as path from 'path'
 
 export class File {
   _filepath: string
-  _content: string
+  _content: any
 
-  constructor(filepath: string, content?: string) {
+  constructor(filepath: string, content?: any) {
     this._filepath = path.normalize(filepath)
     this._content = content || ''
   }
 
-  name() {
+  name(): string {
     return path.parse(this._filepath).name
   }
 
-  dirname() {
+  dirname(): string {
     return path.dirname(this._filepath)
   }
 
-  basename() {
+  basename(): string {
     return path.basename(this._filepath)
   }
 
-  append(data: string) {
-    this._content = this._content + data
+  append(content: any): this {
+    this._content = this._content + content
+
+    return this
   }
 
-  extension() {
+  extension(): string {
     return this._filepath.split('.').pop()
   }
 
-  path() {
+  path(): string {
     return this._filepath
   }
 
-  content() {
+  content(): any {
     return this._content
   }
 }

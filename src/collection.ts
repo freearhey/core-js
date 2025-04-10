@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import { orderBy, Order } from 'natural-orderby'
-import { Dictionary } from './'
+import { Dictionary } from './dictionary.js'
 
 type Iteratee = (value: any, value2?: any) => void
 
@@ -11,15 +11,15 @@ export class Collection {
     this._items = Array.isArray(items) ? items : []
   }
 
-  first(predicate?: Iteratee) {
-    if (predicate) {
-      return this._items.find(predicate)
+  first(iteratee?: Iteratee): any {
+    if (iteratee) {
+      return _.find(this._items, iteratee)
     }
 
     return this._items[0]
   }
 
-  last(predicate?: Iteratee) {
+  last(predicate?: Iteratee): any {
     if (predicate) {
       return _.findLast(this._items, predicate)
     }
@@ -28,48 +28,62 @@ export class Collection {
   }
 
   find(iteratee: Iteratee): any {
-    return this._items.find(iteratee)
+    return _.find(this._items, iteratee)
   }
 
-  add(data: string | number | object) {
+  add(data: any): this {
     this._items.push(data)
 
     return this
   }
 
-  intersects(collection: Collection): boolean {
-    return _.intersection(this._items, collection.all()).length > 0
+  push(data: any): this {
+    return this.add(data)
   }
 
-  count() {
+  intersects(collection: Collection): Collection {
+    const items = _.intersection(this._items, collection.all())
+
+    return new Collection(items)
+  }
+
+  intersectsBy(collection: Collection, iteratee: Iteratee): Collection {
+    const items = _.intersectionBy(this._items, collection.all(), iteratee)
+
+    return new Collection(items)
+  }
+
+  slice(start?: number, end?: number): Collection {
+    const items = _.slice(this._items, start, end)
+
+    return new Collection(items)
+  }
+
+  count(): number {
     return this._items.length
   }
 
-  join(separator: string) {
+  join(separator: string): string {
     return this._items.join(separator)
   }
 
-  indexOf(value: string | number | object) {
+  indexOf(value: string | number | object): number {
     return this._items.indexOf(value)
   }
 
-  push(data: any) {
-    this.add(data)
-  }
-
-  uniq() {
+  uniq(): Collection {
     const items = _.uniq(this._items)
 
     return new Collection(items)
   }
 
-  filter(iteratee: Iteratee) {
+  filter(iteratee: Iteratee): Collection {
     const items = _.filter(this._items, iteratee)
 
     return new Collection(items)
   }
 
-  forEach(callback: (item: any, index?: number) => void) {
+  forEach(callback: (item: any, index?: number) => void): this {
     this._items.forEach(callback)
 
     return this
@@ -81,13 +95,13 @@ export class Collection {
     return new Collection(removed)
   }
 
-  concat(collection: Collection) {
+  concat(collection: Collection): Collection {
     const items = this._items.concat(collection._items)
 
     return new Collection(items)
   }
 
-  reduce(iteratee: Iteratee) {
+  reduce(iteratee: Iteratee): Collection {
     const items = this._items.reduce(iteratee, [])
 
     return new Collection(items)
@@ -101,13 +115,13 @@ export class Collection {
     return this._items.length > 0
   }
 
-  sort() {
+  sort(): Collection {
     const items = this._items.sort()
 
     return new Collection(items)
   }
 
-  sortBy(iteratees: Iteratee | Iteratee[]) {
+  sortBy(iteratees: Iteratee | Iteratee[]): Collection {
     const items = _.sortBy(this._items, iteratees)
 
     return new Collection(items)
@@ -117,7 +131,7 @@ export class Collection {
     iteratees: Iteratee | Iteratee[],
     orders: 'asc' | 'desc' | string[] = 'asc',
     natural: boolean = true
-  ) {
+  ): Collection {
     const items = natural
       ? orderBy(this._items, iteratees, orders as Order)
       : _.orderBy(this._items, iteratees, orders as _.Many<boolean | 'asc' | 'desc'>)
@@ -125,7 +139,7 @@ export class Collection {
     return new Collection(items)
   }
 
-  keyBy(iteratee: Iteratee) {
+  keyBy(iteratee: Iteratee): Dictionary {
     const items = _.keyBy(this._items, iteratee)
 
     return new Dictionary(items)
@@ -133,51 +147,51 @@ export class Collection {
 
   includes(value: any): boolean {
     if (typeof value === 'function') {
-      const found = this._items.find(value)
+      const found = _.find(this._items, value)
 
       return !!found
     } else if (typeof value === 'string') {
-      return this._items.includes(value)
+      return _.includes(this._items, value)
     }
 
     return false
   }
 
-  missing(value: any) {
+  missing(value: any): boolean {
     if (typeof value === 'function') {
-      const found = this._items.find(value)
+      const found = _.find(this._items, value)
 
       return !found
     } else if (typeof value === 'string') {
-      return !this._items.includes(value)
+      return !_.includes(this._items, value)
     }
 
     return true
   }
 
-  uniqBy(iteratee: Iteratee) {
+  uniqBy(iteratee: Iteratee): Collection {
     const items = _.uniqBy(this._items, iteratee)
 
     return new Collection(items)
   }
 
-  groupBy(iteratee: Iteratee) {
+  groupBy(iteratee: Iteratee): Dictionary {
     const object = _.groupBy(this._items, iteratee)
 
     return new Dictionary(object)
   }
 
-  map(iteratee: Iteratee) {
+  map(iteratee: Iteratee): Collection {
     const items = this._items.map(iteratee)
 
     return new Collection(items)
   }
 
-  all() {
+  all(): any[] {
     return this._items
   }
 
-  toJSON() {
+  toJSON(): string {
     return JSON.stringify(this._items)
   }
 

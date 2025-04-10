@@ -1,51 +1,37 @@
-import { DateTime as Luxon, DateTimeOptions } from 'luxon'
+import dayjs, { Dayjs, ManipulateType } from 'dayjs'
+import utc from 'dayjs/plugin/utc.js'
+import timezone from 'dayjs/plugin/timezone.js'
 
-const units: { [key: string]: string } = {
-  y: 'years',
-  year: 'years',
-  years: 'years',
-  M: 'months',
-  month: 'months',
-  months: 'months',
-  q: 'quarters',
-  quarter: 'quarters',
-  quarters: 'quarters',
-  w: 'weeks',
-  week: 'weeks',
-  weeks: 'weeks',
-  d: 'days',
-  day: 'days',
-  days: 'days',
-  m: 'minutes',
-  minute: 'minutes',
-  minutes: 'minutes',
-  h: 'hours',
-  hour: 'hours',
-  hours: 'hours',
-  s: 'seconds',
-  second: 'seconds',
-  seconds: 'seconds'
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+export type DateTimeOptions = {
+  timezone?: string
 }
 
 export class DateTime {
-  _dt: Luxon
+  _dt: Dayjs
 
-  constructor(value?: string | Date | Luxon, options?: DateTimeOptions) {
+  constructor(value?: string | Date | Dayjs, options: DateTimeOptions = {}) {
     if (value instanceof Date) {
-      this._dt = Luxon.fromJSDate(value)
-    } else if (value instanceof Luxon) {
+      this._dt = options.timezone ? dayjs.tz(value, options.timezone) : dayjs(value)
+    } else if (value instanceof dayjs) {
       this._dt = value
     } else if (value === undefined) {
-      this._dt = Luxon.now()
+      this._dt = dayjs()
     } else {
-      this._dt = Luxon.fromISO(value, options)
+      this._dt = options.timezone ? dayjs.tz(value, options.timezone) : dayjs(value)
     }
   }
 
   utc(): DateTime {
-    const date = this._dt.toUTC()
+    return new DateTime(this._dt.toDate(), { timezone: 'UTC' })
+  }
 
-    return new DateTime(date)
+  tz(timezone: string): this {
+    this._dt = this._dt.tz(timezone)
+
+    return this
   }
 
   toString(): string {
@@ -56,27 +42,23 @@ export class DateTime {
     return this._dt.toJSON()
   }
 
-  toJSDate(): Date {
-    return this._dt.toJSDate()
+  toDate(): Date {
+    return this._dt.toDate()
   }
 
-  add(value: number = 0, unit: string): DateTime {
-    const key = units[unit] || 'days'
-    const date = this._dt.plus({ [key]: value })
+  add(value: number = 0, unit?: ManipulateType): DateTime {
+    const date = this._dt.add(value, unit)
 
     return new DateTime(date)
   }
 
-  subtract(value: number = 0, unit: string): DateTime {
-    const key = units[unit] || 'days'
-    const date = this._dt.minus({ [key]: value })
+  subtract(value: number = 0, unit?: ManipulateType): DateTime {
+    const date = this._dt.subtract(value, unit)
 
     return new DateTime(date)
   }
 
   format(format: string): string {
-    format = format.replace(/\[/g, "'").replace(/\]/g, "'")
-
-    return this._dt.toFormat(format)
+    return this._dt.format(format)
   }
 }

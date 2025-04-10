@@ -7,7 +7,7 @@ export class URL {
     this._value = url
   }
 
-  normalize(options?: normalizeUrl.Options): URL {
+  normalize(options?: normalizeUrl.Options): this {
     const _options = { stripWWW: false, ...options }
     const normalized = normalizeUrl(this._value, _options)
 

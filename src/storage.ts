@@ -1,7 +1,7 @@
-import { File } from './'
+import { File } from './file.js'
 import * as path from 'path'
-import fs from 'fs-extra'
 import { glob } from 'glob'
+import fs from 'fs-extra'
 
 export class Storage {
   _rootDir: string
@@ -26,7 +26,7 @@ export class Storage {
     await fs.mkdir(absFilepath, { recursive: true }).catch(console.error)
   }
 
-  createDirSync(dir: string): void {
+  createDirSync(dir: string) {
     const absFilepath = path.isAbsolute(dir) ? path.resolve(dir) : path.join(this._rootDir, dir)
     if (fs.existsSync(absFilepath)) return
 
@@ -77,7 +77,7 @@ export class Storage {
     await fs.writeFile(absFilepath, data, { encoding: 'utf8', flag: 'w' })
   }
 
-  _writeSync(filepath: string, data: any = ''): void {
+  _writeSync(filepath: string, data: any = '') {
     const absFilepath = path.isAbsolute(filepath)
       ? path.resolve(filepath)
       : path.join(this._rootDir, filepath)

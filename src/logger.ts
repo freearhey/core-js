@@ -1,58 +1,49 @@
-import { Signale, SignaleOptions } from 'signale'
+import { createConsola, ConsolaOptions } from 'consola'
 import treeify from 'object-treeify'
 
 export class Logger {
-  logger: Signale
+  logger: any
 
-  constructor(options?: SignaleOptions) {
-    this.logger = new Signale(options)
-    this.logger.config({
-      displayLabel: false,
-      displayScope: false,
-      displayBadge: false
-    })
+  constructor(options?: ConsolaOptions) {
+    this.logger = createConsola(options)
   }
 
   tree(object: object) {
     const output = treeify(object, {
-      spacerNeighbour: '  ',
-      keyNoNeighbour: '  ',
-      keyNeighbour: '  '
+      spacerNeighbour: '',
+      keyNoNeighbour: '',
+      keyNeighbour: ''
     })
 
-    this.info(output)
+    console.log(output)
   }
 
-  await(...args: any) {
-    this.logger.await(...args)
+  mockTypes(cb: () => any) {
+    this.logger.mockTypes(cb)
   }
 
-  complete(...args: any) {
-    this.logger.complete(...args)
+  info(...args: any) {
+    this.logger.info(...args)
+  }
+
+  fail(...args: any) {
+    this.logger.fail(...args)
+  }
+
+  trace(...args: any) {
+    this.logger.trace(...args)
+  }
+
+  ready(...args: any) {
+    this.logger.ready(...args)
   }
 
   debug(...args: any) {
     this.logger.debug(...args)
   }
 
-  fatal(...args: any) {
-    this.logger.fatal(...args)
-  }
-
-  fav(...args: any) {
-    this.logger.fav(...args)
-  }
-
-  note(...args: any) {
-    this.logger.note(...args)
-  }
-
-  pause(...args: any) {
-    this.logger.pause(...args)
-  }
-
-  pending(...args: any) {
-    this.logger.pending(...args)
+  verbose(...args: any) {
+    this.logger.verbose(...args)
   }
 
   star(...args: any) {
@@ -63,16 +54,8 @@ export class Logger {
     this.logger.warn(...args)
   }
 
-  watch(...args: any) {
-    this.logger.watch(...args)
-  }
-
   log(...args: any) {
     this.logger.log(...args)
-  }
-
-  info(...args: any) {
-    this.logger.info(...args)
   }
 
   error(...args: any) {

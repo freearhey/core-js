@@ -1,14 +1,18 @@
-export class Dictionary {
-  _data: {
-    [key: string]: any
-  }
+export type DictionaryData = {
+  [key: string]: any
+}
 
-  constructor(_data?: object) {
+export class Dictionary {
+  _data: DictionaryData
+
+  constructor(_data?: DictionaryData) {
     this._data = _data || {}
   }
 
-  set(key: string, value: any) {
+  set(key: string, value: any): this {
     this._data[key] = value
+
+    return this
   }
 
   has(key: string): boolean {
@@ -27,7 +31,7 @@ export class Dictionary {
     return Object.keys(this._data)
   }
 
-  data() {
+  data(): DictionaryData {
     return this._data
   }
 }
