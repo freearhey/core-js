@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+  </head>
+  <body>
+    <script type="module">
+      import {
+        Collection,
+        Dictionary,
+        DateTime,
+        URL,
+        StringTemplate,
+        Timer,
+        Zip,
+        Logger
+      } from './dist/index.browser.js'
+
+      const collection = new Collection(['a', 'b', 'c'])
+      console.log('collection', collection.first()) // 'a'
+
+      const dict = new Dictionary({ a: 'b', b: 'a' })
+      console.log('dict', dict.get('a')) // 'b'
+
+      const dateTime = new DateTime('2018-04-04T16:00:00.000Z', { timezone: 'UTC' })
+      console.log('dateTime', dateTime.toJSON()) // '2018-04-04T16:00:00.000Z'
+      console.log('dateTime', dateTime.tz('Europe/Moscow').format('HH:mm')) // '19:00'
+
+      const url = new URL('http://www.example.com/folder/file.png')
+      console.log('url', url.normalize({ stripWWW: true }).toString()) // 'http://example.com/folder/file.png'
+
+      const template = new StringTemplate('Hello {name}, you have {count} unread messages')
+      console.log('template', template.variables()) // [name, count]
+
+      const logger = new Logger()
+      logger.info('logger', 'info') // 'info'
+      logger.tree({ a: 'b', b: 'c', c: { a: 'b', b: 'c' } })
+
+      const zip = new Zip()
+      const compressed = zip.compress('ABC')
+      console.log('compressed', compressed)
+      const decompressed = zip.decompress(compressed)
+      console.log('decompressed', decompressed)
+
+      const timer = new Timer()
+      timer.start()
+      setTimeout(() => {
+        console.log('timer', timer.format('SSS')) // 500 < result < 600
+      }, 500)
+    </script>
+  </body>
+</html>
