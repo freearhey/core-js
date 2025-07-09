@@ -200,4 +200,10 @@ export class Collection {
 
     return this
   }
+
+  clone() {
+    const items = [...this._items]
+
+    return new Collection(items)
+  }
 }
