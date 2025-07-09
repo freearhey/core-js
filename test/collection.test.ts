@@ -135,6 +135,13 @@ describe('collection', () => {
     expect(collection.sort()).toEqual(new Collection(['a', 'b', 'c']))
   })
 
+  it('can clone itself', () => {
+    const collection = new Collection(['b', 'a', 'c'])
+    const clone = collection.clone().sort()
+
+    expect(clone.all()).not.toEqual(collection.all())
+  })
+
   it('can order items by value', () => {
     const collection = new Collection([{ name: 'c' }, { name: 'a' }, { name: 'b' }])
 
