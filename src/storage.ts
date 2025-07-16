@@ -40,8 +40,6 @@ export class Storage {
   async _read(filepath: string): Promise<string> {
     const absFilepath = this._getAbsFilepath(filepath)
 
-    console.log('aaa', filepath, absFilepath)
-
     return await fs.readFile(absFilepath, { encoding: 'utf8' })
   }
 
