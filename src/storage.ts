@@ -20,14 +20,14 @@ export class Storage {
   }
 
   async createDir(dir: string): Promise<void> {
-    const absFilepath = path.isAbsolute(dir) ? path.resolve(dir) : path.join(this._rootDir, dir)
+    const absFilepath = this._getAbsFilepath(dir)
     if (await fs.exists(absFilepath)) return
 
     await fs.mkdir(absFilepath, { recursive: true }).catch(console.error)
   }
 
   createDirSync(dir: string) {
-    const absFilepath = path.isAbsolute(dir) ? path.resolve(dir) : path.join(this._rootDir, dir)
+    const absFilepath = this._getAbsFilepath(dir)
     if (fs.existsSync(absFilepath)) return
 
     fs.mkdirSync(absFilepath, { recursive: true })
@@ -38,9 +38,9 @@ export class Storage {
   }
 
   async _read(filepath: string): Promise<string> {
-    const absFilepath = path.isAbsolute(filepath)
-      ? path.resolve(filepath)
-      : path.join(this._rootDir, filepath)
+    const absFilepath = this._getAbsFilepath(filepath)
+
+    console.log('aaa', filepath, absFilepath)
 
     return await fs.readFile(absFilepath, { encoding: 'utf8' })
   }
@@ -52,25 +52,19 @@ export class Storage {
   }
 
   async exists(filepath: string): Promise<boolean> {
-    const absFilepath = path.isAbsolute(filepath)
-      ? path.resolve(filepath)
-      : path.join(this._rootDir, filepath)
+    const absFilepath = this._getAbsFilepath(filepath)
 
     return await fs.exists(absFilepath)
   }
 
   existsSync(filepath: string): boolean {
-    const absFilepath = path.isAbsolute(filepath)
-      ? path.resolve(filepath)
-      : path.join(this._rootDir, filepath)
+    const absFilepath = this._getAbsFilepath(filepath)
 
     return fs.existsSync(absFilepath)
   }
 
   async _write(filepath: string, data: any = ''): Promise<void> {
-    const absFilepath = path.isAbsolute(filepath)
-      ? path.resolve(filepath)
-      : path.join(this._rootDir, filepath)
+    const absFilepath = this._getAbsFilepath(filepath)
     const dir = path.dirname(filepath)
 
     await this.createDir(dir)
@@ -78,9 +72,7 @@ export class Storage {
   }
 
   _writeSync(filepath: string, data: any = '') {
-    const absFilepath = path.isAbsolute(filepath)
-      ? path.resolve(filepath)
-      : path.join(this._rootDir, filepath)
+    const absFilepath = this._getAbsFilepath(filepath)
     const dir = path.dirname(filepath)
 
     this.createDirSync(dir)
@@ -88,9 +80,7 @@ export class Storage {
   }
 
   async append(filepath: string, data: string = ''): Promise<void> {
-    const absFilepath = path.isAbsolute(filepath)
-      ? path.resolve(filepath)
-      : path.join(this._rootDir, filepath)
+    const absFilepath = this._getAbsFilepath(filepath)
 
     await fs.appendFile(absFilepath, data, { encoding: 'utf8' })
   }
@@ -108,22 +98,24 @@ export class Storage {
   }
 
   async saveFile(file: File): Promise<void> {
-    const absFilepath = path.isAbsolute(file.path())
-      ? path.resolve(file.path())
-      : path.join(this._rootDir, file.path())
+    const absFilepath = this._getAbsFilepath(file.path())
 
     await this.createDir(file.dirname())
     await fs.writeFile(absFilepath, file.content(), { encoding: 'utf8', flag: 'w' })
   }
 
   async createStream(filepath: string): Promise<NodeJS.WriteStream> {
-    const absFilepath = path.isAbsolute(filepath)
-      ? path.resolve(filepath)
-      : path.join(this._rootDir, filepath)
+    const absFilepath = this._getAbsFilepath(filepath)
     const dir = path.dirname(filepath)
 
     await this.createDir(dir)
 
     return fs.createWriteStream(absFilepath) as unknown as NodeJS.WriteStream
+  }
+
+  _getAbsFilepath(string: string): string {
+    if (/^(smb\:\/\/|\\\\|\/\/)/i.test(string)) return string
+
+    return path.isAbsolute(string) ? path.resolve(string) : path.join(this._rootDir, string)
   }
 }
