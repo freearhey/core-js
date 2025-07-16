@@ -115,4 +115,14 @@ describe('storage', () => {
 
     expect(fs.readFileSync(`${OUTPUT_DIR}/e.txt`, { encoding: 'utf8' })).toEqual('e')
   })
+
+  it('can return absolute filepath', async () => {
+    const storage = new Storage(INPUT_DIR)
+
+    expect(storage._getAbsFilepath('/a.txt')).toEqual('/a.txt')
+    expect(storage._getAbsFilepath('a.txt')).toEqual(path.resolve(`${INPUT_DIR}/a.txt`))
+    expect(storage._getAbsFilepath('smb://server/a.txt')).toEqual('smb://server/a.txt')
+    expect(storage._getAbsFilepath('\\\\server\\a.txt')).toEqual('\\\\server\\a.txt')
+    expect(storage._getAbsFilepath('//server/a.txt')).toEqual('//server/a.txt')
+  })
 })
