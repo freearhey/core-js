@@ -12,5 +12,5 @@
       "./types"
     ]
   },
-  "include": ["src/index.ts", "src/index.browser.ts"]
+  "include": ["src/index.ts"]
 }
