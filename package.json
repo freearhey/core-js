@@ -1,6 +1,6 @@
 {
   "name": "@freearhey/core",
-  "version": "0.10.3",
+  "version": "0.11.0",
   "description": "Toolset for Node.js",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
