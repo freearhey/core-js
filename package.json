@@ -18,7 +18,7 @@
   },
   "scripts": {
     "build": "rm -rf dist && npx tsc --build && npx vite build",
-    "lint": "npx eslint ./src/**/*.ts ./test/**/*.ts",
+    "lint": "npx eslint ./src/**/*.ts ./tests/**/*.ts",
     "test": "cross-env TZ=Pacific/Nauru vitest run"
   },
   "publishConfig": {
@@ -38,7 +38,6 @@
   "dependencies": {
     "consola": "^3.4.2",
     "dayjs": "^1.11.13",
-    "fs-extra": "^11.3.0",
     "glob": "^11.0.1",
     "lodash": "^4.17.21",
     "natural-orderby": "^5.0.0",
@@ -50,13 +49,11 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.24.0",
-    "@types/fs-extra": "^11.0.4",
     "@types/lodash": "^4.14.198",
     "@types/pako": "^2.0.3",
     "cross-env": "^10.0.0",
     "eslint": "^9.24.0",
     "globals": "^16.0.0",
-    "run-script-os": "^1.1.6",
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.29.1",
     "vite": "^6.2.5",
