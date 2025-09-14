@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from 'vitest'
-import { Logger } from '../dist'
+import { Logger } from '../src'
 
 describe('logger', () => {
   it('can create instance of Signale', () => {
-    const logger = new Logger()
+    const logger = new Logger({ level: -999 })
 
     expect(logger).toBeInstanceOf(Logger)
   })

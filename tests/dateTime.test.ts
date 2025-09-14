@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { DateTime } from '../dist'
+import { DateTime } from '../src'
 import dayjs from 'dayjs'
 
 describe('date', () => {

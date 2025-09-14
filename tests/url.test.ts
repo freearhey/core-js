@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { URL } from '../dist'
+import { URL } from '../src'
 
 describe('url', () => {
   it('can create new url from string', () => {

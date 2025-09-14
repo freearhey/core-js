@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Timer } from '../dist'
+import { Timer } from '../src'
 
 describe('timer', () => {
   it('can return list of variables', async () => {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Zip } from '../dist'
+import { Zip } from '../src'
 
 describe('zip', () => {
   it('can compress string', async () => {

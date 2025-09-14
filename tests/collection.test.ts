@@ -1,4 +1,4 @@
-import { Collection, Dictionary } from '../dist'
+import { Collection, Dictionary } from '../src'
 import { describe, it, expect } from 'vitest'
 
 describe('collection', () => {
@@ -48,7 +48,9 @@ describe('collection', () => {
     const collectionB = new Collection([{ name: 'b' }])
     const collectionC = new Collection([{ name: 'c' }])
 
-    expect(collectionA.intersectsBy(collectionB, i => i.name)).toEqual(new Collection([{ name: 'b' }]))
+    expect(collectionA.intersectsBy(collectionB, i => i.name)).toEqual(
+      new Collection([{ name: 'b' }])
+    )
     expect(collectionB.intersectsBy(collectionC, i => i.name)).toEqual(new Collection())
   })
 

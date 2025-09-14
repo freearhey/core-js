@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { Dictionary } from '../dist'
+import { Dictionary } from '../src'
 
 describe('dictionary', () => {
   it('can create empty dictionary', () => {
