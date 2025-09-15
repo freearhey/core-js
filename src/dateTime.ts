@@ -1,4 +1,4 @@
-import dayjs, { Dayjs, ManipulateType } from 'dayjs'
+import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc.js'
 import timezone from 'dayjs/plugin/timezone.js'
 
@@ -10,9 +10,9 @@ export type DateTimeOptions = {
 }
 
 export class DateTime {
-  _dt: Dayjs
+  _dt: dayjs.Dayjs
 
-  constructor(value?: string | Date | Dayjs, options: DateTimeOptions = {}) {
+  constructor(value?: string | Date | dayjs.Dayjs, options: DateTimeOptions = {}) {
     if (value instanceof Date) {
       this._dt = options.timezone ? dayjs.tz(value, options.timezone) : dayjs(value)
     } else if (value instanceof dayjs) {
@@ -46,13 +46,13 @@ export class DateTime {
     return this._dt.toDate()
   }
 
-  add(value: number = 0, unit?: ManipulateType): DateTime {
+  add(value: number = 0, unit?: dayjs.ManipulateType): DateTime {
     const date = this._dt.add(value, unit)
 
     return new DateTime(date)
   }
 
-  subtract(value: number = 0, unit?: ManipulateType): DateTime {
+  subtract(value: number = 0, unit?: dayjs.ManipulateType): DateTime {
     const date = this._dt.subtract(value, unit)
 
     return new DateTime(date)
