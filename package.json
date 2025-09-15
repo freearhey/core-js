@@ -41,7 +41,7 @@
     "glob": "^11.0.1",
     "lodash": "^4.17.21",
     "natural-orderby": "^5.0.0",
-    "normalize-url": "^6.1.0",
+    "normalize-url": "^8.1.0",
     "object-treeify": "^2.1.1",
     "pako": "^2.1.0",
     "timer-node": "^5.0.9"
