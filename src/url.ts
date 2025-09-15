@@ -1,4 +1,4 @@
-import normalizeUrl from 'normalize-url'
+import normalizeUrl, { Options as NormalizeUrlOoptions } from 'normalize-url'
 
 export class URL {
   _value: string
@@ -7,7 +7,7 @@ export class URL {
     this._value = url
   }
 
-  normalize(options?: normalizeUrl.Options): this {
+  normalize(options?: NormalizeUrlOoptions): this {
     const _options = { stripWWW: false, ...options }
     const normalized = normalizeUrl(this._value, _options)
 
