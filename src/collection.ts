@@ -165,10 +165,10 @@ export class Collection<Type> {
     return new Dictionary(object)
   }
 
-  map(iteratee: Iteratee): Collection<Type> {
-    const items = this._items.map(iteratee)
+  map<Type>(iteratee: () => Type): Collection<Type> {
+    const items = this._items.map<Type>(iteratee)
 
-    return new Collection<Type>(items as Type[])
+    return new Collection<Type>(items)
   }
 
   all(): Type[] {
