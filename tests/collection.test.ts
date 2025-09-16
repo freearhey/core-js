@@ -200,8 +200,8 @@ describe('collection', () => {
 
     expect(collectionA.includes((i: any) => i.name === 'a')).toEqual(true)
     expect(collectionA.includes((i: any) => i.name === 'd')).toEqual(false)
-    expect(collectionB.includes('b')).toEqual(true)
-    expect(collectionB.includes('d')).toEqual(false)
+    expect(collectionB.includes((i: string) => i === 'b')).toEqual(true)
+    expect(collectionB.includes((i: string) => i === 'd')).toEqual(false)
   })
 
   it('can check if Collection missing value', () => {
@@ -210,8 +210,8 @@ describe('collection', () => {
 
     expect(collectionA.missing((i: any) => i.name === 'a')).toEqual(false)
     expect(collectionA.missing((i: any) => i.name === 'd')).toEqual(true)
-    expect(collectionB.missing('b')).toEqual(false)
-    expect(collectionB.missing('d')).toEqual(true)
+    expect(collectionB.missing((i: string) => i === 'b')).toEqual(false)
+    expect(collectionB.missing((i: string) => i === 'd')).toEqual(true)
   })
 
   it('can remove duplicates by value', () => {
