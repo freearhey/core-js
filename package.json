@@ -1,6 +1,6 @@
 {
   "name": "@freearhey/core",
-  "version": "0.12.1",
+  "version": "0.13.0",
   "description": "Toolset for Node.js",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.js",
@@ -19,6 +19,7 @@
   "scripts": {
     "build": "rm -rf dist && npx tsc --build && npx vite build",
     "lint": "npx eslint ./src/**/*.ts ./tests/**/*.ts",
+    "docs": "typedoc",
     "test": "cross-env TZ=Pacific/Nauru vitest run"
   },
   "publishConfig": {
@@ -54,6 +55,8 @@
     "cross-env": "^10.0.0",
     "eslint": "^9.24.0",
     "globals": "^16.0.0",
+    "typedoc": "^0.28.13",
+    "typedoc-plugin-markdown": "^4.8.1",
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.29.1",
     "vite": "^6.2.5",
