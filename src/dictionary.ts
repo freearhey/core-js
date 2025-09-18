@@ -1,37 +1,39 @@
-export type DictionaryData = {
-  [key: string]: any
-}
+export class Dictionary<Type> {
+  #data: Record<string, Type>
 
-export class Dictionary {
-  _data: DictionaryData
-
-  constructor(_data?: DictionaryData) {
-    this._data = _data || {}
+  constructor(data?: Record<string, Type>) {
+    this.#data = data || {}
   }
 
-  set(key: string, value: any): this {
-    this._data[key] = value
+  /** Sets the value for the key */
+  set(key: string, value: Type): this {
+    this.#data[key] = value
 
     return this
   }
 
+  /** Checks whether a value with a given key exists in the dictionary */
   has(key: string): boolean {
-    return !!this._data[key]
+    return !!this.#data[key]
   }
 
+  /** Checks whether a value with a given key is missing from the dictionary */
   missing(key: string): boolean {
-    return !this._data[key]
+    return !this.#data[key]
   }
 
-  get(key: string): any {
-    return this._data[key] ? this._data[key] : undefined
+  /** Returns the value for the given key */
+  get(key: string): Type | undefined {
+    return this.#data[key] ? this.#data[key] : undefined
   }
 
+  /** Returns a list of keys */
   keys(): string[] {
-    return Object.keys(this._data)
+    return Object.keys(this.#data)
   }
 
-  data(): DictionaryData {
-    return this._data
+  /** Returns all data as a JS object */
+  data(): Record<string, Type> {
+    return this.#data
   }
 }

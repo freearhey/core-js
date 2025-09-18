@@ -1,193 +1,204 @@
-import _ from 'lodash'
 import { orderBy, Order } from 'natural-orderby'
 import { Dictionary } from './dictionary.js'
+import _ from 'lodash'
 
-type Iteratee = (value: any) => void
+export type CollectionIterator = (value: any) => void
 
 export class Collection<Type> {
-  private _items: Type[] = []
+  #items: Type[] = []
 
   constructor(items?: Type[]) {
-    this._items = Array.isArray(items) ? items : []
+    this.#items = Array.isArray(items) ? items : []
   }
 
-  first(iteratee?: Iteratee): Type {
-    if (iteratee) {
-      return _.find(this._items, iteratee)
+  /** Gets the first element of collection */
+  first(iterator?: CollectionIterator): Type {
+    if (iterator) {
+      return _.find(this.#items, iterator)
     }
 
-    return this._items[0]
+    return this.#items[0]
   }
 
-  last(predicate?: Iteratee): Type {
+  /** Gets the last element of collection */
+  last(predicate?: CollectionIterator): Type {
     if (predicate) {
-      return _.findLast(this._items, predicate)
+      return _.findLast(this.#items, predicate)
     }
 
-    return this._items[this._items.length - 1]
+    return this.#items[this.#items.length - 1]
   }
 
-  find(iteratee: Iteratee): Type {
-    return _.find(this._items, iteratee)
+  /** Return the first element of the collection that meets the requirements */
+  find(iterator: CollectionIterator): Type {
+    return _.find(this.#items, iterator)
   }
 
+  /** Adds a new element to the end of the collection */
   add(data: Type): this {
-    this._items.push(data)
+    this.#items.push(data)
 
     return this
   }
 
-  push(data: Type): this {
-    return this.add(data)
+  /** Gets a random element from collection */
+  sample(): Type {
+    return _.sample(this.#items)
   }
 
+  /** Returns a new collection with all unique elements that are in both collections */
   intersects(collection: Collection<Type>): Collection<Type> {
-    const items = _.intersection(this._items, collection.all())
+    const items = _.intersection(this.#items, collection.all())
 
     return new Collection<Type>(items)
   }
 
-  intersectsBy(collection: Collection<Type>, iteratee: Iteratee): Collection<Type> {
-    const items = _.intersectionBy(this._items, collection.all(), iteratee)
+  /** Returns a new collection with all unique elements that are in both collections, taking into account the specified requirements */
+  intersectsBy(collection: Collection<Type>, iterator: CollectionIterator): Collection<Type> {
+    const items = _.intersectionBy(this.#items, collection.all(), iterator)
 
     return new Collection<Type>(items)
   }
 
+  /** Creates a slice of collection from start up to, but not including, end */
   slice(start?: number, end?: number): Collection<Type> {
-    const items = _.slice(this._items, start, end)
+    const items = _.slice(this.#items, start, end)
 
     return new Collection<Type>(items)
   }
 
+  /** Returns the number of items in the collection */
   count(): number {
-    return this._items.length
+    return this.#items.length
   }
 
+  /** Converts all elements in collection into a string separated by separator */
   join(separator: string): string {
-    return this._items.join(separator)
+    return this.#items.join(separator)
   }
 
-  indexOf(instance: Type): number {
-    return this._items.indexOf(instance)
+  /** Gets the index at which the first occurrence of value is found in collection */
+  indexOf(item: Type): number {
+    return this.#items.indexOf(item)
   }
 
+  /** Creates a duplicate-free version of a collection */
   uniq(): Collection<Type> {
-    const items = _.uniq(this._items)
+    const items = _.uniq(this.#items)
 
     return new Collection<Type>(items)
   }
 
-  filter(iteratee: Iteratee): Collection<Type> {
-    const items = _.filter(this._items, iteratee)
+  /** Creates a duplicate-free version of a collection according to requirements */
+  uniqBy(iterator: CollectionIterator): Collection<Type> {
+    const items = _.uniqBy(this.#items, iterator)
 
     return new Collection<Type>(items)
   }
 
+  /** Iterates over elements of collection, returning a collection of all elements that meets the requirements */
+  filter(iterator: CollectionIterator): Collection<Type> {
+    const items = _.filter(this.#items, iterator)
+
+    return new Collection<Type>(items)
+  }
+
+  /** Iterates over elements of collection and invokes callback for each element */
   forEach(callback: (item: Type, index?: number) => void): this {
-    this._items.forEach(callback)
+    this.#items.forEach(callback)
 
     return this
   }
 
-  remove(iteratee: Iteratee): Collection<Type> {
-    const removed = _.remove(this._items, iteratee)
+  /** Removes all elements from collection that meets the requirements */
+  remove(iterator: CollectionIterator): Collection<Type> {
+    const removed = _.remove(this.#items, iterator)
 
     return new Collection<Type>(removed)
   }
 
-  concat(collection: Collection<Type>): Collection<Type> {
-    const items = this._items.concat(collection._items)
-
-    return new Collection<Type>(items)
-  }
-
-  reduce(iteratee: Iteratee): Collection<Type> {
-    const items = this._items.reduce(iteratee, [])
-
-    return new Collection<Type>(items)
-  }
-
-  isEmpty(): boolean {
-    return this._items.length === 0
-  }
-
-  notEmpty(): boolean {
-    return this._items.length > 0
-  }
-
-  sort(): Collection<Type> {
-    const items = this._items.sort()
-
-    return new Collection<Type>(items)
-  }
-
-  sortBy(iteratees: Iteratee | Iteratee[]): Collection<Type> {
-    const items = _.sortBy(this._items, iteratees)
-
-    return new Collection<Type>(items)
-  }
-
-  orderBy(
-    iteratees: Iteratee | Iteratee[],
-    orders: 'asc' | 'desc' | string[] = 'asc',
-    natural: boolean = true
-  ): Collection<Type> {
-    const items = natural
-      ? orderBy(this._items, iteratees, orders as Order)
-      : _.orderBy(this._items, iteratees, orders as _.Many<boolean | 'asc' | 'desc'>)
-
-    return new Collection<Type>(items)
-  }
-
-  keyBy(iteratee: Iteratee): Dictionary {
-    const items = _.keyBy(this._items, iteratee)
-
-    return new Dictionary(items)
-  }
-
-  includes(value: Iteratee): boolean {
-    return !!_.find(this._items, value)
-  }
-
-  missing(value: Iteratee): boolean {
-    return !_.find(this._items, value)
-  }
-
-  uniqBy(iteratee: Iteratee): Collection<Type> {
-    const items = _.uniqBy(this._items, iteratee)
-
-    return new Collection<Type>(items)
-  }
-
-  groupBy(iteratee: Iteratee): Dictionary {
-    const object = _.groupBy(this._items, iteratee)
-
-    return new Dictionary(object)
-  }
-
-  map<Type>(iteratee: () => Type): Collection<Type> {
-    const items = this._items.map<Type>(iteratee)
-
-    return new Collection<Type>(items)
-  }
-
-  all(): Type[] {
-    return this._items
-  }
-
-  toJSON(): string {
-    return JSON.stringify(this._items)
-  }
-
-  mergeBy(collection: Collection<Type>, iteratee: Iteratee): Collection<Type> {
-    this._items = _.unionBy(this._items, collection._items, iteratee)
+  /** Combines elements from both collections into one */
+  concat(collection: Collection<Type>): this {
+    this.#items = this.#items.concat(collection.#items)
 
     return this
   }
 
-  clone() {
-    const items = [...this._items]
+  /** Returns `true` if the collection is empty */
+  isEmpty(): boolean {
+    return this.#items.length === 0
+  }
+
+  /** Returns `true` if the collection is not empty */
+  isNotEmpty(): boolean {
+    return this.#items.length > 0
+  }
+
+  /** Sorts the items in the collection alphabetically */
+  sort(): Collection<Type> {
+    const items = this.#items.sort()
 
     return new Collection<Type>(items)
+  }
+
+  /** Sorts collection items according to requirements */
+  sortBy(
+    iterators: CollectionIterator | CollectionIterator[],
+    orders: 'asc' | 'desc' | string[] = 'asc',
+    natural: boolean = true
+  ): this {
+    this.#items = natural
+      ? orderBy(this.#items, iterators, orders as Order)
+      : _.orderBy(this.#items, iterators, orders as _.Many<boolean | 'asc' | 'desc'>)
+
+    return this
+  }
+
+  /** Checks if value is in collection */
+  includes(value: CollectionIterator): boolean {
+    return !!_.find(this.#items, value)
+  }
+
+  /** Checks whether a value is missing from the collection */
+  missing(value: CollectionIterator): boolean {
+    return !_.find(this.#items, value)
+  }
+
+  /** Creates a Dictionary composed of keys generated from the results of running each element of collection thru iterator */
+  keyBy(iterator: CollectionIterator): Dictionary<Type> {
+    const items = _.keyBy(this.#items, iterator)
+
+    return new Dictionary<Type>(items)
+  }
+
+  /** Creates a Dictionary composed of keys generated from the results of running each element of collection thru iterator */
+  groupBy(iterator: CollectionIterator): Dictionary<Type[]> {
+    const _dictionary = _.groupBy<Type>(this.#items, iterator)
+
+    return new Dictionary<Type[]>(_dictionary)
+  }
+
+  /** Creates a new Collection of values by running each element in collection thru iterator */
+  map<Type>(iterator: (item: any) => Type): Collection<Type> {
+    const items = this.#items.map<Type>(iterator)
+
+    return new Collection<Type>(items)
+  }
+
+  /** Creates a shallow copy of collection */
+  clone() {
+    const items = [...this.#items]
+
+    return new Collection<Type>(items)
+  }
+
+  /** Returns the underlying array represented by the collection */
+  all(): Type[] {
+    return this.#items
+  }
+
+  /** Converts the collection into a JSON serialized string */
+  toJSON(): string {
+    return JSON.stringify(this.#items)
   }
 }

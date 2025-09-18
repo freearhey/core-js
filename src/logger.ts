@@ -1,13 +1,18 @@
-import { createConsola, ConsolaOptions } from 'consola'
+import { createConsola, ConsolaInstance } from 'consola'
 import treeify from 'object-treeify'
 
-export class Logger {
-  logger: any
+export type LoggerOptions = {
+  level: number
+}
 
-  constructor(options?: ConsolaOptions) {
-    this.logger = createConsola(options)
+export class Logger {
+  #logger: ConsolaInstance
+
+  constructor(options?: LoggerOptions) {
+    this.#logger = createConsola(options)
   }
 
+  /** Outputs the object to the console as a tree structure */
   tree(object: object) {
     const output = treeify(object, {
       spacerNeighbour: '',
@@ -19,54 +24,50 @@ export class Logger {
   }
 
   mockTypes(cb: () => any) {
-    this.logger.mockTypes(cb)
+    this.#logger.mockTypes(cb)
   }
 
-  info(...args: any) {
-    this.logger.info(...args)
+  info(message: any, ...args: any[]) {
+    this.#logger.info(message, ...args)
   }
 
-  fail(...args: any) {
-    this.logger.fail(...args)
+  fail(message: any, ...args: any[]) {
+    this.#logger.fail(message, ...args)
   }
 
-  trace(...args: any) {
-    this.logger.trace(...args)
+  trace(message: any, ...args: any[]) {
+    this.#logger.trace(message, ...args)
   }
 
-  ready(...args: any) {
-    this.logger.ready(...args)
+  ready(message: any, ...args: any[]) {
+    this.#logger.ready(message, ...args)
   }
 
-  debug(...args: any) {
-    this.logger.debug(...args)
+  debug(message: any, ...args: any[]) {
+    this.#logger.debug(message, ...args)
   }
 
-  verbose(...args: any) {
-    this.logger.verbose(...args)
+  verbose(message: any, ...args: any[]) {
+    this.#logger.verbose(message, ...args)
   }
 
-  star(...args: any) {
-    this.logger.star(...args)
+  warn(message: any, ...args: any[]) {
+    this.#logger.warn(message, ...args)
   }
 
-  warn(...args: any) {
-    this.logger.warn(...args)
+  log(message: any, ...args: any[]) {
+    this.#logger.log(message, ...args)
   }
 
-  log(...args: any) {
-    this.logger.log(...args)
+  error(message: any, ...args: any[]) {
+    this.#logger.error(message, ...args)
   }
 
-  error(...args: any) {
-    this.logger.error(...args)
+  start(message: any, ...args: any[]) {
+    this.#logger.start(message, ...args)
   }
 
-  start(...args: any) {
-    this.logger.start(...args)
-  }
-
-  success(...args: any) {
-    this.logger.success(...args)
+  success(message: any, ...args: any[]) {
+    this.#logger.success(message, ...args)
   }
 }
