@@ -2,7 +2,6 @@
   "plugin": ["typedoc-plugin-markdown"],
   "out": "./docs",
   "readme": "none",
-  "entryFileName": "index",
   "hidePageHeader": true,
   "hideBreadcrumbs": true,
   "useCodeBlocks": true,
