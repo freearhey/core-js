@@ -26,12 +26,12 @@ console.log(brears.all()) // ['brown', 'panda', 'polar']
 - [Template](docs/classes/Template.md)
 - [Timer](docs/classes/Timer.md)
 
-## Test
+## Testing
 
 ```sh
 npm test
 ```
 
-## LICENSE
+## License
 
 [MIT](LICENSE)
