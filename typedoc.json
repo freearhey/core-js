@@ -1,5 +1,11 @@
 {
   "plugin": ["typedoc-plugin-markdown"],
   "out": "./docs",
-  "readme": "none"
+  "readme": "none",
+  "entryFileName": "index",
+  "hidePageHeader": true,
+  "hideBreadcrumbs": true,
+  "useCodeBlocks": true,
+  "expandObjects": true,
+  "expandParameters": true
 }

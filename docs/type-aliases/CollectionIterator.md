@@ -1,14 +1,10 @@
-[**@freearhey/core**](../README.md)
-
-***
-
-[@freearhey/core](../README.md) / CollectionIterator
-
 # Type Alias: CollectionIterator()
 
-> **CollectionIterator** = (`value`) => `void`
+```ts
+type CollectionIterator = (value: any) => void;
+```
 
-Defined in: [collection.ts:5](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/collection.ts#L5)
+Defined in: [collection.ts:5](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/collection.ts#L5)
 
 ## Parameters
 

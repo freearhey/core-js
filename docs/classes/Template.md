@@ -1,20 +1,16 @@
-[**@freearhey/core**](../README.md)
-
-***
-
-[@freearhey/core](../README.md) / Template
-
 # Class: Template
 
-Defined in: template.ts:1
+Defined in: [template.ts:1](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/template.ts#L1)
 
 ## Constructors
 
 ### Constructor
 
-> **new Template**(`template`): `Template`
+```ts
+new Template(template: string): Template;
+```
 
-Defined in: template.ts:4
+Defined in: [template.ts:4](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/template.ts#L4)
 
 #### Parameters
 
@@ -30,9 +26,13 @@ Defined in: template.ts:4
 
 ### format()
 
-> **format**(`obj`): `string`
+```ts
+format(obj: {
+[key: string]: string | number;
+}): string;
+```
 
-Defined in: template.ts:16
+Defined in: [template.ts:16](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/template.ts#L16)
 
 Replaces variables in the template with values from the object with keys of the same name
 
@@ -48,9 +48,11 @@ Replaces variables in the template with values from the object with keys of the 
 
 ### variables()
 
-> **variables**(): `string`[]
+```ts
+variables(): string[];
+```
 
-Defined in: template.ts:9
+Defined in: [template.ts:9](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/template.ts#L9)
 
 Returns a list of all variables specified in the template
 

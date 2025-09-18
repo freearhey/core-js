@@ -1,20 +1,16 @@
-[**@freearhey/core**](../README.md)
-
-***
-
-[@freearhey/core](../README.md) / Timer
-
 # Class: Timer
 
-Defined in: [timer.ts:7](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L7)
+Defined in: [timer.ts:7](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L7)
 
 ## Constructors
 
 ### Constructor
 
-> **new Timer**(`options?`): `Timer`
+```ts
+new Timer(options?: TimerOptions): Timer;
+```
 
-Defined in: [timer.ts:10](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L10)
+Defined in: [timer.ts:10](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L10)
 
 #### Parameters
 
@@ -30,9 +26,11 @@ Defined in: [timer.ts:10](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8
 
 ### format()
 
-> **format**(`format`): `string`
+```ts
+format(format: string): string;
+```
 
-Defined in: [timer.ts:53](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L53)
+Defined in: [timer.ts:53](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L53)
 
 Formats the elapsed time using placeholders (`HH`, `mm`, `ss`, `ms`, etc.)
 
@@ -50,9 +48,11 @@ Formats the elapsed time using placeholders (`HH`, `mm`, `ss`, `ms`, etc.)
 
 ### ms()
 
-> **ms**(): `number`
+```ts
+ms(): number;
+```
 
-Defined in: [timer.ts:43](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L43)
+Defined in: [timer.ts:43](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L43)
 
 Returns the elapsed time in milliseconds
 
@@ -64,9 +64,11 @@ Returns the elapsed time in milliseconds
 
 ### pause()
 
-> **pause**(): `this`
+```ts
+pause(): this;
+```
 
-Defined in: [timer.ts:22](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L22)
+Defined in: [timer.ts:22](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L22)
 
 Pauses the timer
 
@@ -78,9 +80,11 @@ Pauses the timer
 
 ### resume()
 
-> **resume**(): `this`
+```ts
+resume(): this;
+```
 
-Defined in: [timer.ts:29](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L29)
+Defined in: [timer.ts:29](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L29)
 
 Resumes the timer
 
@@ -92,9 +96,11 @@ Resumes the timer
 
 ### start()
 
-> **start**(): `this`
+```ts
+start(): this;
+```
 
-Defined in: [timer.ts:15](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L15)
+Defined in: [timer.ts:15](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L15)
 
 Starts the timer
 
@@ -106,9 +112,11 @@ Starts the timer
 
 ### stop()
 
-> **stop**(): `this`
+```ts
+stop(): this;
+```
 
-Defined in: [timer.ts:36](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L36)
+Defined in: [timer.ts:36](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L36)
 
 Stops the timer
 
@@ -120,9 +128,11 @@ Stops the timer
 
 ### time()
 
-> **time**(): `Time`
+```ts
+time(): Time;
+```
 
-Defined in: [timer.ts:48](https://github.com/freearhey/core-js/blob/c1e6c9f8cab8b3dcf3b54b7eef0c855b591ac948/src/timer.ts#L48)
+Defined in: [timer.ts:48](https://github.com/freearhey/core-js/blob/6db7f115712c15f748a052d2096b443436f0a01b/src/timer.ts#L48)
 
 Returns an object of time fractions (`d`, `h`, `m`, `s`, `ms`)
 

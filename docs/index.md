@@ -1,7 +1,3 @@
-**@freearhey/core**
-
-***
-
 # @freearhey/core
 
 ## Classes
