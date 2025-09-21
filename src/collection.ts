@@ -104,8 +104,8 @@ export class Collection<Type> {
   }
 
   /** Iterates over elements of collection and invokes callback for each element */
-  forEach(callback: (item: Type, index?: number) => void): this {
-    this.#items.forEach(callback)
+  forEach(callback: (item: Type, index?: number) => Promise<void> | void): this {
+    _.forEach(this.#items, callback)
 
     return this
   }
@@ -119,7 +119,7 @@ export class Collection<Type> {
 
   /** Combines elements from both collections into one */
   concat(collection: Collection<Type>): this {
-    this.#items = this.#items.concat(collection.#items)
+    this.#items = _.concat(this.#items, collection.all())
 
     return this
   }
