@@ -48,6 +48,8 @@ export class Collection<Type> {
 
   /** Returns a new collection with all unique elements that are in both collections */
   intersects(collection: Collection<Type>): Collection<Type> {
+    if (!(collection instanceof Collection)) return this
+
     const items = _.intersection(this.#items, collection.all())
 
     return new Collection<Type>(items)
@@ -55,6 +57,8 @@ export class Collection<Type> {
 
   /** Returns a new collection with all unique elements that are in both collections, taking into account the specified requirements */
   intersectsBy(collection: Collection<Type>, iterator: CollectionIterator): Collection<Type> {
+    if (!(collection instanceof Collection)) return this
+
     const items = _.intersectionBy(this.#items, collection.all(), iterator)
 
     return new Collection<Type>(items)
@@ -119,6 +123,8 @@ export class Collection<Type> {
 
   /** Combines elements from both collections into one */
   concat(collection: Collection<Type>): this {
+    if (!(collection instanceof Collection)) return this
+
     this.#items = _.concat(this.#items, collection.all())
 
     return this
