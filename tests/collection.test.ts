@@ -56,7 +56,7 @@ describe('collection', () => {
     const collectionB = new Collection<{ name: string }>([{ name: 'b' }])
     const collectionC = new Collection<{ name: string }>([{ name: 'c' }])
 
-    expect(collectionA.intersectsBy(collectionB, 'name')).toEqual(
+    expect(collectionA.intersectsBy(collectionB, item => item.name)).toEqual(
       new Collection<{ name: string }>([{ name: 'b' }])
     )
     expect(collectionB.intersectsBy(collectionC, 'name')).toEqual(new Collection<string>())
