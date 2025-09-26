@@ -1,6 +1,6 @@
 # Class: Logger
 
-Defined in: [logger.ts:8](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L8)
+Defined in: [logger.ts:8](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L8)
 
 ## Constructors
 
@@ -10,7 +10,7 @@ Defined in: [logger.ts:8](https://github.com/freearhey/core-js/blob/c1073252bda2
 new Logger(options?: LoggerOptions): Logger;
 ```
 
-Defined in: [logger.ts:11](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L11)
+Defined in: [logger.ts:11](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L11)
 
 #### Parameters
 
@@ -30,7 +30,7 @@ Defined in: [logger.ts:11](https://github.com/freearhey/core-js/blob/c1073252bda
 debug(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:46](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L46)
+Defined in: [logger.ts:46](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L46)
 
 #### Parameters
 
@@ -54,7 +54,7 @@ Defined in: [logger.ts:46](https://github.com/freearhey/core-js/blob/c1073252bda
 error(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:62](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L62)
+Defined in: [logger.ts:62](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L62)
 
 #### Parameters
 
@@ -78,7 +78,7 @@ Defined in: [logger.ts:62](https://github.com/freearhey/core-js/blob/c1073252bda
 fail(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:34](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L34)
+Defined in: [logger.ts:34](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L34)
 
 #### Parameters
 
@@ -102,7 +102,7 @@ Defined in: [logger.ts:34](https://github.com/freearhey/core-js/blob/c1073252bda
 info(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:30](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L30)
+Defined in: [logger.ts:30](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L30)
 
 #### Parameters
 
@@ -126,7 +126,7 @@ Defined in: [logger.ts:30](https://github.com/freearhey/core-js/blob/c1073252bda
 log(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:58](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L58)
+Defined in: [logger.ts:58](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L58)
 
 #### Parameters
 
@@ -150,7 +150,7 @@ Defined in: [logger.ts:58](https://github.com/freearhey/core-js/blob/c1073252bda
 mockTypes(cb: () => any): void;
 ```
 
-Defined in: [logger.ts:26](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L26)
+Defined in: [logger.ts:26](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L26)
 
 #### Parameters
 
@@ -170,7 +170,7 @@ Defined in: [logger.ts:26](https://github.com/freearhey/core-js/blob/c1073252bda
 ready(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:42](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L42)
+Defined in: [logger.ts:42](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L42)
 
 #### Parameters
 
@@ -194,7 +194,7 @@ Defined in: [logger.ts:42](https://github.com/freearhey/core-js/blob/c1073252bda
 start(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:66](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L66)
+Defined in: [logger.ts:66](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L66)
 
 #### Parameters
 
@@ -218,7 +218,7 @@ Defined in: [logger.ts:66](https://github.com/freearhey/core-js/blob/c1073252bda
 success(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:70](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L70)
+Defined in: [logger.ts:70](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L70)
 
 #### Parameters
 
@@ -242,7 +242,7 @@ Defined in: [logger.ts:70](https://github.com/freearhey/core-js/blob/c1073252bda
 trace(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:38](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L38)
+Defined in: [logger.ts:38](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L38)
 
 #### Parameters
 
@@ -266,7 +266,7 @@ Defined in: [logger.ts:38](https://github.com/freearhey/core-js/blob/c1073252bda
 tree(object: object): void;
 ```
 
-Defined in: [logger.ts:16](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L16)
+Defined in: [logger.ts:16](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L16)
 
 Outputs the object to the console as a tree structure
 
@@ -288,7 +288,7 @@ Outputs the object to the console as a tree structure
 verbose(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:50](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L50)
+Defined in: [logger.ts:50](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L50)
 
 #### Parameters
 
@@ -312,7 +312,7 @@ Defined in: [logger.ts:50](https://github.com/freearhey/core-js/blob/c1073252bda
 warn(message: any, ...args: any[]): void;
 ```
 
-Defined in: [logger.ts:54](https://github.com/freearhey/core-js/blob/c1073252bda2c3588ab21d4d1a9655ef612a6dd4/src/logger.ts#L54)
+Defined in: [logger.ts:54](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L54)
 
 #### Parameters
 
