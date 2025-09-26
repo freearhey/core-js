@@ -56,12 +56,14 @@ export class Collection<Type> {
   }
 
   /** Returns a new collection with all unique elements that are in both collections, taking into account the specified requirements */
-  intersectsBy(collection: Collection<Type>, iterator: CollectionIterator): Collection<Type> {
+  intersectsBy(collection: Collection<Type>, key: string): Collection<Type> {
     if (!(collection instanceof Collection)) return this
 
-    const items = _.intersectionBy(this.#items, collection.all(), iterator)
+    const filtered = this.#items.filter(item => {
+      return collection.all().find((_item: Type) => _item[key] === item[key])
+    })
 
-    return new Collection<Type>(items)
+    return new Collection<Type>(filtered)
   }
 
   /** Creates a slice of collection from start up to, but not including, end */
