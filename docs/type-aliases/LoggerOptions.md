@@ -6,7 +6,7 @@ type LoggerOptions = {
 };
 ```
 
-Defined in: [logger.ts:4](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L4)
+Defined in: [logger.ts:4](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/logger.ts#L4)
 
 ## Properties
 
@@ -16,4 +16,4 @@ Defined in: [logger.ts:4](https://github.com/freearhey/core-js/blob/8c0704a08503
 level: number;
 ```
 
-Defined in: [logger.ts:5](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/logger.ts#L5)
+Defined in: [logger.ts:5](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/logger.ts#L5)

@@ -4,7 +4,7 @@
 type CollectionIterator = (value: any) => void;
 ```
 
-Defined in: [collection.ts:5](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/collection.ts#L5)
+Defined in: [collection.ts:5](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L5)
 
 ## Parameters
 

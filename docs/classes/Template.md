@@ -1,6 +1,6 @@
 # Class: Template
 
-Defined in: [template.ts:1](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/template.ts#L1)
+Defined in: [template.ts:1](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/template.ts#L1)
 
 ## Constructors
 
@@ -10,7 +10,7 @@ Defined in: [template.ts:1](https://github.com/freearhey/core-js/blob/8c0704a085
 new Template(template: string): Template;
 ```
 
-Defined in: [template.ts:4](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/template.ts#L4)
+Defined in: [template.ts:4](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/template.ts#L4)
 
 #### Parameters
 
@@ -32,7 +32,7 @@ format(obj: {
 }): string;
 ```
 
-Defined in: [template.ts:16](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/template.ts#L16)
+Defined in: [template.ts:16](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/template.ts#L16)
 
 Replaces variables in the template with values from the object with keys of the same name
 
@@ -52,7 +52,7 @@ Replaces variables in the template with values from the object with keys of the 
 variables(): string[];
 ```
 
-Defined in: [template.ts:9](https://github.com/freearhey/core-js/blob/8c0704a0850302bdab71f91382f3c72b852fcf07/src/template.ts#L9)
+Defined in: [template.ts:9](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/template.ts#L9)
 
 Returns a list of all variables specified in the template
 
