@@ -21,6 +21,13 @@ describe('dictionary', () => {
     expect(dict.data()).toEqual({ a: 'b' })
   })
 
+  it('can remove value by the key', () => {
+    const dict = new Dictionary<string>({ a: 'b', b: 'a' })
+    dict.remove('a')
+
+    expect(dict.data()).toEqual({ b: 'a' })
+  })
+
   it('can check if value is exist by its key', () => {
     const dict = new Dictionary<string>({ a: 'b' })
 
