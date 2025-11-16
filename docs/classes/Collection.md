@@ -1,6 +1,6 @@
 # Class: Collection\<Type\>
 
-Defined in: [collection.ts:7](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L7)
+Defined in: [collection.ts:7](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L7)
 
 ## Type Parameters
 
@@ -16,7 +16,7 @@ Defined in: [collection.ts:7](https://github.com/freearhey/core-js/blob/1a0ae600
 new Collection<Type>(items?: Type[]): Collection<Type>;
 ```
 
-Defined in: [collection.ts:10](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L10)
+Defined in: [collection.ts:10](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L10)
 
 #### Parameters
 
@@ -36,7 +36,7 @@ Defined in: [collection.ts:10](https://github.com/freearhey/core-js/blob/1a0ae60
 add(data: Type): this;
 ```
 
-Defined in: [collection.ts:38](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L38)
+Defined in: [collection.ts:38](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L38)
 
 Adds a new element to the end of the collection
 
@@ -58,7 +58,7 @@ Adds a new element to the end of the collection
 all(): Type[];
 ```
 
-Defined in: [collection.ts:205](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L205)
+Defined in: [collection.ts:205](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L205)
 
 Returns the underlying array represented by the collection
 
@@ -74,7 +74,7 @@ Returns the underlying array represented by the collection
 clone(): Collection<Type>;
 ```
 
-Defined in: [collection.ts:198](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L198)
+Defined in: [collection.ts:198](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L198)
 
 Creates a shallow copy of collection
 
@@ -90,7 +90,7 @@ Creates a shallow copy of collection
 concat(collection: Collection<Type>): this;
 ```
 
-Defined in: [collection.ts:128](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L128)
+Defined in: [collection.ts:128](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L128)
 
 Combines elements from both collections into one
 
@@ -112,7 +112,7 @@ Combines elements from both collections into one
 count(): number;
 ```
 
-Defined in: [collection.ts:78](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L78)
+Defined in: [collection.ts:78](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L78)
 
 Returns the number of items in the collection
 
@@ -128,7 +128,7 @@ Returns the number of items in the collection
 filter(iterator: CollectionIterator): Collection<Type>;
 ```
 
-Defined in: [collection.ts:107](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L107)
+Defined in: [collection.ts:107](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L107)
 
 Iterates over elements of collection, returning a collection of all elements that meets the requirements
 
@@ -150,7 +150,7 @@ Iterates over elements of collection, returning a collection of all elements tha
 find(iterator: CollectionIterator): Type;
 ```
 
-Defined in: [collection.ts:33](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L33)
+Defined in: [collection.ts:33](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L33)
 
 Return the first element of the collection that meets the requirements
 
@@ -172,7 +172,7 @@ Return the first element of the collection that meets the requirements
 first(iterator?: CollectionIterator): Type;
 ```
 
-Defined in: [collection.ts:15](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L15)
+Defined in: [collection.ts:15](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L15)
 
 Gets the first element of collection
 
@@ -194,7 +194,7 @@ Gets the first element of collection
 forEach(callback: (item: Type, index?: number) => void | Promise<void>): this;
 ```
 
-Defined in: [collection.ts:114](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L114)
+Defined in: [collection.ts:114](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L114)
 
 Iterates over elements of collection and invokes callback for each element
 
@@ -216,7 +216,7 @@ Iterates over elements of collection and invokes callback for each element
 groupBy(iterator: CollectionIterator): Dictionary<Type[]>;
 ```
 
-Defined in: [collection.ts:184](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L184)
+Defined in: [collection.ts:184](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L184)
 
 Creates a Dictionary composed of keys generated from the results of running each element of collection thru iterator
 
@@ -238,7 +238,7 @@ Creates a Dictionary composed of keys generated from the results of running each
 includes(value: CollectionIterator): boolean;
 ```
 
-Defined in: [collection.ts:167](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L167)
+Defined in: [collection.ts:167](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L167)
 
 Checks if value is in collection
 
@@ -260,7 +260,7 @@ Checks if value is in collection
 indexOf(item: Type): number;
 ```
 
-Defined in: [collection.ts:88](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L88)
+Defined in: [collection.ts:88](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L88)
 
 Gets the index at which the first occurrence of value is found in collection
 
@@ -282,7 +282,7 @@ Gets the index at which the first occurrence of value is found in collection
 intersects(collection: Collection<Type>): Collection<Type>;
 ```
 
-Defined in: [collection.ts:50](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L50)
+Defined in: [collection.ts:50](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L50)
 
 Returns a new collection with all unique elements that are in both collections
 
@@ -304,7 +304,7 @@ Returns a new collection with all unique elements that are in both collections
 intersectsBy(collection: Collection<Type>, iterator: string | CollectionIterator): Collection<Type>;
 ```
 
-Defined in: [collection.ts:59](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L59)
+Defined in: [collection.ts:59](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L59)
 
 Returns a new collection with all unique elements that are in both collections, taking into account the specified requirements
 
@@ -330,7 +330,7 @@ Returns a new collection with all unique elements that are in both collections, 
 isEmpty(): boolean;
 ```
 
-Defined in: [collection.ts:137](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L137)
+Defined in: [collection.ts:137](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L137)
 
 Returns `true` if the collection is empty
 
@@ -346,7 +346,7 @@ Returns `true` if the collection is empty
 isNotEmpty(): boolean;
 ```
 
-Defined in: [collection.ts:142](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L142)
+Defined in: [collection.ts:142](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L142)
 
 Returns `true` if the collection is not empty
 
@@ -362,7 +362,7 @@ Returns `true` if the collection is not empty
 join(separator: string): string;
 ```
 
-Defined in: [collection.ts:83](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L83)
+Defined in: [collection.ts:83](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L83)
 
 Converts all elements in collection into a string separated by separator
 
@@ -384,7 +384,7 @@ Converts all elements in collection into a string separated by separator
 keyBy(iterator: CollectionIterator): Dictionary<Type>;
 ```
 
-Defined in: [collection.ts:177](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L177)
+Defined in: [collection.ts:177](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L177)
 
 Creates a Dictionary composed of keys generated from the results of running each element of collection thru iterator
 
@@ -406,7 +406,7 @@ Creates a Dictionary composed of keys generated from the results of running each
 last(predicate?: CollectionIterator): Type;
 ```
 
-Defined in: [collection.ts:24](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L24)
+Defined in: [collection.ts:24](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L24)
 
 Gets the last element of collection
 
@@ -428,7 +428,7 @@ Gets the last element of collection
 map<Type>(iterator: (item: any) => Type): Collection<Type>;
 ```
 
-Defined in: [collection.ts:191](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L191)
+Defined in: [collection.ts:191](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L191)
 
 Creates a new Collection of values by running each element in collection thru iterator
 
@@ -456,7 +456,7 @@ Creates a new Collection of values by running each element in collection thru it
 missing(value: CollectionIterator): boolean;
 ```
 
-Defined in: [collection.ts:172](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L172)
+Defined in: [collection.ts:172](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L172)
 
 Checks whether a value is missing from the collection
 
@@ -478,7 +478,7 @@ Checks whether a value is missing from the collection
 remove(iterator: CollectionIterator): Collection<Type>;
 ```
 
-Defined in: [collection.ts:121](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L121)
+Defined in: [collection.ts:121](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L121)
 
 Removes all elements from collection that meets the requirements
 
@@ -500,7 +500,7 @@ Removes all elements from collection that meets the requirements
 sample(): Type;
 ```
 
-Defined in: [collection.ts:45](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L45)
+Defined in: [collection.ts:45](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L45)
 
 Gets a random element from collection
 
@@ -516,7 +516,7 @@ Gets a random element from collection
 slice(start?: number, end?: number): Collection<Type>;
 ```
 
-Defined in: [collection.ts:71](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L71)
+Defined in: [collection.ts:71](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L71)
 
 Creates a slice of collection from start up to, but not including, end
 
@@ -542,7 +542,7 @@ Creates a slice of collection from start up to, but not including, end
 sort(): Collection<Type>;
 ```
 
-Defined in: [collection.ts:147](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L147)
+Defined in: [collection.ts:147](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L147)
 
 Sorts the items in the collection alphabetically
 
@@ -563,7 +563,7 @@ sortBy(
    natural: boolean): this;
 ```
 
-Defined in: [collection.ts:154](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L154)
+Defined in: [collection.ts:154](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L154)
 
 Sorts collection items according to requirements
 
@@ -593,7 +593,7 @@ Sorts collection items according to requirements
 toJSON(): string;
 ```
 
-Defined in: [collection.ts:210](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L210)
+Defined in: [collection.ts:210](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L210)
 
 Converts the collection into a JSON serialized string
 
@@ -609,7 +609,7 @@ Converts the collection into a JSON serialized string
 uniq(): Collection<Type>;
 ```
 
-Defined in: [collection.ts:93](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L93)
+Defined in: [collection.ts:93](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L93)
 
 Creates a duplicate-free version of a collection
 
@@ -625,7 +625,7 @@ Creates a duplicate-free version of a collection
 uniqBy(iterator: CollectionIterator): Collection<Type>;
 ```
 
-Defined in: [collection.ts:100](https://github.com/freearhey/core-js/blob/1a0ae60054995ab013369976c8c642b8bee26ee2/src/collection.ts#L100)
+Defined in: [collection.ts:100](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/collection.ts#L100)
 
 Creates a duplicate-free version of a collection according to requirements
 
