@@ -12,6 +12,13 @@ export class Dictionary<Type> {
     return this
   }
 
+  /** Remove the value by the key */
+  remove(key: string): this {
+    delete this.#data[key]
+
+    return this
+  }
+
   /** Checks whether a value with a given key exists in the dictionary */
   has(key: string): boolean {
     return !!this.#data[key]
