@@ -1,6 +1,6 @@
 {
   "name": "@freearhey/core",
-  "version": "0.15.0",
+  "version": "0.15.1",
   "description": "Toolset for Node.js",
   "type": "module",
   "exports": {
