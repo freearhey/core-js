@@ -128,7 +128,7 @@ export class Collection<Type> {
   concat(collection: Collection<Type>): this {
     if (!(collection instanceof Collection)) return this
 
-    this.#items = _.concat(this.#items, collection.all())
+    this.#items = [...this.#items, ...collection.all()]
 
     return this
   }
