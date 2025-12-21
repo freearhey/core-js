@@ -196,7 +196,7 @@ export class Collection<Type> {
 
   /** Creates a shallow copy of collection */
   clone() {
-    const items = [...this.#items]
+    const items = _.cloneDeep(this.#items)
 
     return new Collection<Type>(items)
   }
