@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 export class Dictionary<Type> {
   #data: Record<string, Type>
 
@@ -37,6 +39,13 @@ export class Dictionary<Type> {
   /** Returns a list of keys */
   keys(): string[] {
     return Object.keys(this.#data)
+  }
+
+  /** Creates a shallow copy of dictionary */
+  clone() {
+    const items = _.cloneDeep(this.#data)
+
+    return new Dictionary<Type>(items)
   }
 
   /** Returns all data as a JS object */
