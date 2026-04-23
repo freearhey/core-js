@@ -1,4 +1,5 @@
 {
+  "gitRevision": "master",
   "plugin": ["typedoc-plugin-markdown"],
   "out": "./docs",
   "readme": "none",
