@@ -16,7 +16,7 @@
     "lint": "npx eslint ./src/**/*.ts ./tests/**/*.ts",
     "docs": "typedoc",
     "test": "cross-env TZ=Pacific/Nauru vitest run",
-    "prepublishOnly": "npm run build && typedoc"
+    "prepublishOnly": "npm run build"
   },
   "publishConfig": {
     "access": "public",
