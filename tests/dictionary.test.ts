@@ -59,4 +59,16 @@ describe('dictionary', () => {
 
     expect(dict.data()).toEqual({ a: 'b', b: 'c' })
   })
+
+  it('can clone itself', () => {
+    let dict = new Dictionary<string>({ a: 'b', b: 'c' })
+
+    const clone = dict.clone()
+
+    dict.set('c', 'e')
+
+    dict = clone
+
+    expect(dict.data()).toEqual({ a: 'b', b: 'c' })
+  })
 })
