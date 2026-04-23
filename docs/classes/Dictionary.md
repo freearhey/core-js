@@ -1,6 +1,6 @@
 # Class: Dictionary\<Type\>
 
-Defined in: [dictionary.ts:1](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L1)
+Defined in: [dictionary.ts:3](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L3)
 
 ## Type Parameters
 
@@ -16,7 +16,7 @@ Defined in: [dictionary.ts:1](https://github.com/freearhey/core-js/blob/0c10d35e
 new Dictionary<Type>(data?: Record<string, Type>): Dictionary<Type>;
 ```
 
-Defined in: [dictionary.ts:4](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L4)
+Defined in: [dictionary.ts:6](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L6)
 
 #### Parameters
 
@@ -30,13 +30,29 @@ Defined in: [dictionary.ts:4](https://github.com/freearhey/core-js/blob/0c10d35e
 
 ## Methods
 
+### clone()
+
+```ts
+clone(): Dictionary<Type>;
+```
+
+Defined in: [dictionary.ts:45](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L45)
+
+Creates a shallow copy of dictionary
+
+#### Returns
+
+`Dictionary`\<`Type`\>
+
+***
+
 ### data()
 
 ```ts
 data(): Record<string, Type>;
 ```
 
-Defined in: [dictionary.ts:43](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L43)
+Defined in: [dictionary.ts:52](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L52)
 
 Returns all data as a JS object
 
@@ -52,7 +68,7 @@ Returns all data as a JS object
 get(key: string): Type;
 ```
 
-Defined in: [dictionary.ts:33](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L33)
+Defined in: [dictionary.ts:35](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L35)
 
 Returns the value for the given key
 
@@ -74,7 +90,7 @@ Returns the value for the given key
 has(key: string): boolean;
 ```
 
-Defined in: [dictionary.ts:23](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L23)
+Defined in: [dictionary.ts:25](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L25)
 
 Checks whether a value with a given key exists in the dictionary
 
@@ -96,7 +112,7 @@ Checks whether a value with a given key exists in the dictionary
 keys(): string[];
 ```
 
-Defined in: [dictionary.ts:38](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L38)
+Defined in: [dictionary.ts:40](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L40)
 
 Returns a list of keys
 
@@ -112,7 +128,7 @@ Returns a list of keys
 missing(key: string): boolean;
 ```
 
-Defined in: [dictionary.ts:28](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L28)
+Defined in: [dictionary.ts:30](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L30)
 
 Checks whether a value with a given key is missing from the dictionary
 
@@ -134,7 +150,7 @@ Checks whether a value with a given key is missing from the dictionary
 remove(key: string): this;
 ```
 
-Defined in: [dictionary.ts:16](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L16)
+Defined in: [dictionary.ts:18](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L18)
 
 Remove the value by the key
 
@@ -156,7 +172,7 @@ Remove the value by the key
 set(key: string, value: Type): this;
 ```
 
-Defined in: [dictionary.ts:9](https://github.com/freearhey/core-js/blob/0c10d35e9fecd0b07759d2140f131adbb53ae09a/src/dictionary.ts#L9)
+Defined in: [dictionary.ts:11](https://github.com/freearhey/core-js/blob/master/src/dictionary.ts#L11)
 
 Sets the value for the key
 
